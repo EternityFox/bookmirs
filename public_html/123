@@ -1,0 +1,7 @@
+/*<?php if(!in_array($view, $views) || $view=='archive' || $view=='alltasks') { ?>
+        <div class="submenu">
+                <div <?php if(!in_array($view, $views) && $view!='archive' && $view!='alltasks') echo 'class="active"';?>><a  href="/">Текущие задачи</a></div>
+                <div <?php if($view=='archive') echo 'class="active"';?>><a  href="?view=archive">Архив задач</a></div>
+                <div <?php if($view=='alltasks') echo 'class="active"';?>><a  href="?view=alltasks">Администрирование</a></div>
+        </div>
+

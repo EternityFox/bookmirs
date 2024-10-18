@@ -1,0 +1,15 @@
+<?php require_once 'inc/header.php' ?>
+<main>
+    <div class="container mt-minus" id="mainbody">
+        <?php include 'facts.php' ?>
+        <?php include 'cart_product.php' ?>
+        <?php include 'shops.php' ?>
+        <?php include 'main.php' ?>
+    </div>
+    <?php include 'vacancies.php' ?>
+</main>
+<footer>
+    <?php require_once 'inc/footer.php' ?>
+</footer>
+</body>
+</html>

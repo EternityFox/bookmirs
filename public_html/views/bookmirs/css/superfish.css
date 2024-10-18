@@ -1,0 +1,75 @@
+/*** ESSENTIAL STYLES ***/
+.sf-menu, .sf-menu * {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.sf-menu li {
+	position: relative;
+}
+.sf-menu ul {
+	position: absolute;
+	display: none;
+	top: 100%;
+	left: 0;
+	z-index: 99;
+}
+.sf-menu > li {
+	float: left;
+	padding:0px 10px;
+}
+.sf-menu li:hover > ul,
+.sf-menu li.sfHover > ul {
+	display: block;
+}
+
+.sf-menu a {
+	display: block;
+	position: relative;
+}
+.sf-menu ul ul {
+	top: 0;
+	left: 100%;
+}
+ul.sf-menu {
+background-color:#fff;
+}
+.sf-menu ul {
+background: #333333;
+color:#fff;
+}
+ul.sf-menu > li > a { 
+text-decoration: none;
+}
+ul.sf-menu > li > a { 
+color: #333333;
+display: block;
+padding: 5px 0px;
+}
+.sf-menu ul > li > a { 
+color:#fff;
+}
+
+ul.sf-menu > li:hover {
+background-color:#333333;
+color: #0077BB;
+}
+ul.sf-menu > li:hover  a{
+color: #0077BB;
+}
+ul.sf-menu > li:hover  ul a{
+color: #fff;
+font-size:12px;
+}
+ul.sf-menu > li:hover  ul a:hover{
+color: #0077BB;
+}
+ul.sf-menu > li + li { 
+border-top: 1px dotted #EEEEEE;
+}
+.sf-menu ul > li + li { 
+border-top: 1px dotted #605F5F;
+}
+ul.sf-menu > li:first-child { 
+border-top: 0px none currentColor;
+}

@@ -1,0 +1,51 @@
+php_flag display_startup_errors off
+php_flag display_errors off
+php_flag html_errors off
+php_flag log_errors on
+php_flag ignore_repeated_errors off
+php_flag ignore_repeated_source off
+php_flag report_memleaks on
+php_flag track_errors on
+php_value docref_root 0
+php_value docref_ext 0
+php_value error_log /var/www/bookmirs.ru/public_html/PHP_errors.log
+php_value error_reporting 2047
+php_value log_errors_max_len 0
+
+<Files PHP_errors.log>
+    Order allow,deny
+    Deny from all
+    Satisfy All
+</Files>
+##
+## ƒанный файл может располагатьс€ в директории любого виртуального хоста.
+## Ћюбую из директив можно не указывать, тогда беретс€ значение по умолчанию.
+## Ќе пропустите ведущий символ "#" перед директивами!!!
+##
+## ≈сли вы хотите настроить Apache так, чтобы хост был виден из локальной
+## сети, см. статью http ://www.denwer.ru/faq/shared.html
+## 
+
+# dnwr_ip   127.0.0.2
+# dnwr_host custom-host
+# dnwr_port 8648
+
+##
+## ¬се dnwr-директивы "разворачиваютс€" в шаблоне виртуального хоста (httpd.conf).
+## Ѕиблиотеки ƒенвера напр€мую (мину€ подстановку в шаблоне) их не используют.
+## ¬ы можете добавить сюда и другие директивы, ссыла€сь на них в шаблоне хоста.
+##
+AddDefaultCharset UTF-8
+
+php_flag suhosin.simulation 1
+
+RewriteEngine on
+RewriteBase /
+
+RewriteRule ^news/?$	?view=news
+RewriteRule ^promotion$ views/bookmirs/promotion.php [L]
+
+Options +FollowSymLinks
+ RewriteEngine On
+ RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+ RewriteRule ^(.*)$ http://%1/$1 [R=301,L]

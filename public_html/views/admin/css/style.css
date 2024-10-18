@@ -1,0 +1,141 @@
+/*
+* Base structure
+*/
+html, body { height: 100%; }
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body { padding-top: 50px; }
+body#login-page { background: url("../images/you_shall_no_pass.png") 150px bottom no-repeat transparent; overflow: hidden; }
+
+/*
+* Global add-ons
+*/
+.sub-header { padding-bottom: 10px; border-bottom: 1px solid #eee; }
+
+/*
+* Top navigation
+* Hide default border to remove 1px line.
+*/
+.navbar-fixed-top { border: 0; }
+
+/*
+* Sidebar
+*/
+
+/* Hide for mobile, show later */
+.sidebar { display: none; }
+@media (min-width:768px) {
+.sidebar { position: fixed; top: 51px; bottom: 0; left: 0; z-index: 1000; display: block; padding: 20px; overflow-x: hidden; overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */ background-color: #f5f5f5; border-right: 1px solid #eee; }
+}
+
+/* Sidebar navigation */
+.nav-sidebar { margin-right: -21px; /* 20px padding + 1px border */ margin-bottom: 20px; margin-left: -20px; }
+.nav-sidebar > li > a { padding-right: 20px; padding-left: 20px; }
+.nav-sidebar > .active > a, .nav-sidebar > .active > a:hover, .nav-sidebar > .active > a:focus { color: #fff; background-color: #428bca; }
+
+/*
+* Main content
+*/
+.main { padding: 20px; }
+@media (min-width:768px) {
+.main { padding-right: 40px; padding-left: 40px; }
+}
+.main .page-header { margin-top: 0; }
+
+/*
+* Placeholder dashboard ideas
+*/
+.placeholders { margin-bottom: 30px; text-align: center; }
+.placeholders h4 { margin-bottom: 0; }
+.placeholder { margin-bottom: 20px; }
+.placeholder img { display: inline-block; border-radius: 50%; }
+img.news_image { max-width: 100px; max-height: 100px; }
+form#upload-image-form { margin-top: 10px; display: inline-block; border: 2px solid #EAEAEC; padding: 50px; }
+form#upload-image-form  p { display: inline-block; }
+form#upload-image-form .row { width: 100%; display: inline-block; margin-bottom: 10px; }
+form#upload-image-form label { float: left; padding-right: 10px; font-weight: bold; }
+form#upload-image-form label.error { color: red; display: inline-block; width: 380px; float: left; font-weight: normal; }
+form#upload-image-form input, form#upload-image-form textarea { width: 380px; }
+form#upload-image-form .loading { display: none; }
+input[disabled="disabled"] { background-color: #ECEBEC; }
+form#upload-image-form .cell { width: 100%; text-align: left; display: inline-block; float: left; margin: 0 50px 10px 0; }
+.submit-btn { background-color: #FF4A0B; color: #FFFFFF; font-weight: bold; opacity: 0.9; text-transform: uppercase; padding: 10px; margin-top: 25px; }
+#remove-image-upload { float: right; display: none; }
+.img-data { font-size: 12px; }
+
+/* ==|== media queries ======================================================
+EXAMPLE Media Query for Responsive Design.
+This example overrides the primary ('mobile first') styles
+Modify as content requires.
+========================================================================== */
+@media only screen and (min-width:35em) {
+
+/* Style adjustments for viewports that meet the condition */}
+
+/* ==|== non-semantic helper classes ========================================
+Please define your styles before this section.
+========================================================================== */
+
+/* For image replacement */
+.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; *line-height: 0; }
+.ir br { display: none; }
+
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+.hidden { display: none !important; visibility: hidden; }
+
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+
+/* Contain floats: h5bp.com/q */
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }
+
+/* ==|== print styles =======================================================
+Print styles.
+Inlined to avoid required HTTP connection: h5bp.com/r
+========================================================================== */
+@media print {
+* { background: transparent !important; color: black !important; box-shadow: none !important; text-shadow: none !important; filter: none !important; -ms-filter: none !important; }
+
+/* Black prints faster: h5bp.com/s */
+a, a:visited { text-decoration: underline; }
+a[href]:after { content: " ("attr(href) ")"; }
+abbr[title]:after { content: " ("attr(title) ")"; }
+.ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+
+/* Don't show links for images, or javascript/internal links */
+pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+thead { display: table-header-group; }
+
+/* h5bp.com/t */
+tr, img { page-break-inside: avoid; }
+img { max-width: 100% !important; }
+@page { margin: 0.5cm; }
+p, h2, h3 { orphans: 3; widows: 3; }
+h2, h3 { page-break-after: avoid; }
+}
+
+/* BSA */
+.bsap { position: fixed; top: 10px; right: 10px; width: 300px; }
+.close_bsap { position: absolute; z-index: 1000; top: 0; right: 0; padding: 5px 8px; }
+img.preview { width: 300px; }
+#news_submit { float: right; }
+table#vactable td { padding-bottom: 20px; padding-right: 20px; }
+.navbar-inverse .navbar-nav > li > a#username { font-weight: 700; color: #fff; }
+.dash-col4 { text-align: center; margin-bottom: 10px; }
+div#sd { font-size: 11px; }
+.not-active { color: #FF0000; font-size: 16px; font-weight: 700; }
+.table-striped > tbody > tr.notin > td { background-color: #FE8888; }
+table#import-log td, table#smaller td { font-size: 12px; }
+
+.page-form textarea { height: 500px; }
+
+.filter { padding-top: 10px }
+.filter input, .filter select { display: inline-block; width: 200px; }
