@@ -142,37 +142,67 @@
 <? endif; ?>
 
 <? if ($_SESSION['auth']['role'] != 8 && $_GET['login'] != 'shop'): ?>
-    <nav class="navbar navbar-expand-lg py-lg-4 pt-2 fixed-top" id="navbar-scroll">
+<?php if ($view == 'promotion'): ?>
+<nav class="navbar navbar-expand-lg py-lg-4 pt-2 fixed-top fixed-top promotion-header" id="navbar-scroll">
+    <?php else: ?>
+    <nav class="navbar navbar-expand-lg py-lg-4 pt-2 fixed-top fixed-top" id="navbar-scroll">
+        <?php endif; ?>
         <div class="container">
+                <?php if ($view == 'promotion'): ?>
+                <a href="/">
             <img src="http://bookmirs.ru/views/test/images/logo_mirs.png" alt="Логотип компании" width="150"
-                 height="50" class="filter-drop-shadow">
-            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 semibold-18 navList d-flex align-item-center">
+                 height="50" class="filter-drop-shadow promotion-logo">
+                 </a>
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 semibold-18 navList d-flex align-item-center promotion-navbar">
+                 <a href="/">
                 <img src="http://bookmirs.ru/views/test/images/logo_mirs.png" alt="Логотип компании" width="150"
                      height="50" class="filter-drop-shadow d-block d-lg-none">
-                <li class="nav-item navLi">
-                    <a class="nav-link" href="#scrollspyFactsCompany">О нас</a>
-                </li>
-                <?php if ($shops): ?>
+                     </a>
                     <li class="nav-item navLi">
-                        <a class="nav-link" href="#scrollspyAddressShops">Магазины</a>
+                        <a class="nav-link promotion-link" href="/#scrollspyPrizes">Призы</a>
                     </li>
-                <?php endif; ?>
-                <?php if ($news): ?>
                     <li class="nav-item navLi">
-                        <a class="nav-link" href="#scrollspyNews">Новости</a>
+                        <a class="nav-link promotion-link" href="/#scrollspyParticipation">Как участвовать</a>
                     </li>
-                <?php endif; ?>
-                <?php if ($vacancies): ?>
                     <li class="nav-item navLi">
-                        <a class="nav-link" href="#scrollspyVacancys">Вакансии</a>
+                        <a class="nav-link promotion-link" href="/#scrollspyShops">Где купить</a>
                     </li>
-                <?php endif; ?>
-                <!--<li class="nav-item navLi">
-                    <a class="nav-link" href="#scrollspyNews">Новости</a>
-                </li> -->
-                <li class="nav-item navLi">
-                    <a class="nav-link" href="#scrollspyContacts">Контакты</a>
-                </li>
+                    <li class="nav-item navLi">
+                        <a class="nav-link promotion-link" href="/#scrollspyQuestion">Вопрос ответ</a>
+                    </li>
+                     <li class="nav-item navLi">
+                        <a class="nav-link promotion-link" href="/#scrollspyContacts">Контакты</a>
+                    </li>
+                                        </ul>
+                <?php else: ?>
+                <a href="/">
+            <img src="http://bookmirs.ru/views/test/images/logo_mirs.png" alt="Логотип компании" width="150"
+                 height="50" class="filter-drop-shadow">
+                 </a>
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 semibold-18 navList d-flex align-item-center">
+                 <a href="/">
+                <img src="http://bookmirs.ru/views/test/images/logo_mirs.png" alt="Логотип компании" width="150"
+                     height="50" class="filter-drop-shadow d-block d-lg-none">
+                     </a>
+                    <li class="nav-item navLi">
+                        <a class="nav-link" href="./#scrollspyFactsCompany">О нас</a>
+                    </li>
+                    <li class="nav-item navLi">
+                        <a class="nav-link" href="./#scrollspyAddressShops">Магазины</a>
+                    </li>
+
+                    <li class="nav-item navLi">
+                        <a class="nav-link" href="./#scrollspyNews">Новости</a>
+                    </li>
+                    <li class="nav-item navLi">
+                        <a class="nav-link" href="./#scrollspyVacancys">Вакансии</a>
+                    </li>
+
+                    <li class="nav-item navLi">
+                        <a class="nav-link" href="#scrollspyContacts">Контакты</a>
+                    </li>
+
+
                 <button type="button" data-bs-toggle="modal" data-bs-target="#modalBonus"
                         class="btn text-white header-points-btn mb-2 me-lg-0 semibold-16 d-block d-sm-none">Показать
                     баллы
@@ -189,6 +219,7 @@
                     <div class="line3"></div>
                 </div>
             </div>
+             <?php endif; ?>
         </div>
     </nav>
     <div class="modal fade" id="modalBonus" tabindex="-1" aria-hidden="true">
@@ -219,22 +250,25 @@
             </div>
         </div>
     </div>
-    <header>
-        <div class="container" id="scrollspyMain">
-            <div class="intro-text">
-                <div class="col-lg-5 col-12 col-sm-8 offset-lg-1 card-action">
-                    <div class="card bg-transparent border-0">
-                        <h1 class="card-title mb-1 pe-lg-4">Не знаешь, где купить книгу, с доставкой на дом?</h1>
-                        <h2 class="card-text mt-2 mt-lg-3">Онлайн магазин точка24, большой ассортимент товаров, здесь
-                            есть
-                            все, что тебе необходимо!!!</h2>
-                        <a href="https://tochka24.com/"
-                           class="btn btn-blue-mirs col-6 semibold-16 mt-lg-3 mt-1 text-white d-flex justify-content-center">Кликай
-                            сюда!</a>
+    <?php if ($view !== 'promotion'): ?>
+        <header>
+            <div class="container" id="scrollspyMain">
+                <div class="intro-text">
+                    <div class="col-lg-5 col-12 col-sm-8 offset-lg-1 card-action">
+                        <div class="card bg-transparent border-0">
+                            <h1 class="card-title mb-1 pe-lg-4">Не знаешь, где купить книгу, с доставкой на дом?</h1>
+                            <h2 class="card-text mt-2 mt-lg-3">Онлайн магазин точка24, большой ассортимент товаров,
+                                здесь
+                                есть
+                                все, что тебе необходимо!!!</h2>
+                            <a href="https://tochka24.com/"
+                               class="btn btn-blue-mirs col-6 semibold-16 mt-lg-3 mt-1 text-white d-flex justify-content-center">Кликай
+                                сюда!</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-    </header>
+        </header>
+    <?php endif; ?>
     <script>
         $('#btn_bonus').click(function () {
             $.ajax({
@@ -251,9 +285,10 @@
             });
         })
     </script>
-<? endif; ?>
+    <? endif; ?>
 
-
-<div id="ie-detected"></div>
-<nav class="container masstop hidden-sm hidden-xs">
-</nav>
+    <?php if ($view !== 'promotion'): ?>
+    <div id="ie-detected"></div>
+    <nav class="container masstop hidden-sm hidden-xs">
+    </nav>
+<?php endif; ?>

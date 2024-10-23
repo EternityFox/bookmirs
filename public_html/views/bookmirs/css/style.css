@@ -526,6 +526,12 @@ footer .btn-blue-mirs {
 .preloader { position: fixed; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; background: #ffffffa6; z-index: 1001; }
 .preloader__image { position: relative; top: 50%; left: 50%; width: 64px; height: 64px; margin-top: -32px; margin-left: -32px; background: url("../images/preloader.gif") no-repeat 50% 50%; }
 .loaded { display: none; }
+.promotion-header{
+    position: absolute;
+}
+.promotion-header .container{
+    margin-top: 4px;
+}
 
 @media (max-width: 769px) {
     .white-popup{ max-width: 100%; }
