@@ -8,4 +8,5 @@
 	<li><a href="/admin/?view=users">Пользователи</a></li>
 	<li><a href="/admin/?view=equipment">Оборудование</a></li>
 	<li><a href="/admin/?view=banners">Баннеры</a></li>
+	<li><a href="/admin/?view=questions">Вопросы</a></li>
 </ul>

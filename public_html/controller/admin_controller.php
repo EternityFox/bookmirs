@@ -19,7 +19,6 @@ if (!($_SESSION['auth']['user'])) {
 }
 
 checkRole();
-
 // получение динамичной части шаблона #content
 $view = empty($_GET['view']) ? 'dash' : $_GET['view'];
 if ($_POST['add_news']) {
@@ -42,6 +41,16 @@ if ($_POST['add_news']) {
 } elseif ($_POST['edit_vacancy']) {
     editVacancy();
     header("Location: /admin/?view=vacancies");
+} elseif ($_POST['add_question']) {
+    addQuestion();
+    header("Location: /admin/?view=questions");
+    exit;
+} elseif ($_POST['delete_question']) {
+    deleteQuestion();
+    redirect();
+} elseif ($_POST['edit_question']) {
+    editQuestion();
+    header("Location: /admin/?view=questions");
 } elseif ($_POST['add_shop']) {
     addShop();
     header("Location: /admin/?view=shops");
@@ -61,7 +70,6 @@ if ($_POST['add_news']) {
 } elseif ($_POST['page_edit']) {
     updatePage();
 }
-
 switch ($view) {
     case('dash'):
 
@@ -86,6 +94,16 @@ switch ($view) {
     case('edit_news'):
         $news_id = abs((int)$_GET['news_id']);
         $news = getNewsDetail($news_id);
+        break;
+
+    case('questions'):
+        $questions = getQuestions();
+        break;
+    case('add_question'):
+        break;
+    case('edit_question'):
+        $question_id = $_GET['question_id'];
+        $question = getQuestionDetail($question_id);
         break;
     case('vacancies'):
         $vacancies = getVacancies();

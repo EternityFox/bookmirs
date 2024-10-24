@@ -159,19 +159,19 @@
                      height="50" class="filter-drop-shadow d-block d-lg-none">
                      </a>
                     <li class="nav-item navLi">
-                        <a class="nav-link promotion-link" href="/#scrollspyPrizes">Призы</a>
+                        <a class="nav-link promotion-link" href="#scrollspyPrizes">Призы</a>
                     </li>
                     <li class="nav-item navLi">
-                        <a class="nav-link promotion-link" href="/#scrollspyParticipation">Как участвовать</a>
+                        <a class="nav-link promotion-link" href="#scrollspyParticipation">Как участвовать</a>
                     </li>
                     <li class="nav-item navLi">
-                        <a class="nav-link promotion-link" href="/#scrollspyShops">Где купить</a>
+                        <a class="nav-link promotion-link" href="#scrollspyShops">Где купить</a>
                     </li>
                     <li class="nav-item navLi">
-                        <a class="nav-link promotion-link" href="/#scrollspyQuestion">Вопрос ответ</a>
+                        <a class="nav-link promotion-link" href="#scrollspyQuestion">Вопрос ответ</a>
                     </li>
                      <li class="nav-item navLi">
-                        <a class="nav-link promotion-link" href="/#scrollspyContacts">Контакты</a>
+                        <a class="nav-link promotion-link" href="#scrollspyContacts">Контакты</a>
                     </li>
                                         </ul>
                 <?php else: ?>
