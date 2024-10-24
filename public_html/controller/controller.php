@@ -23,10 +23,10 @@ else
 }
 */
 // получение массива каталога
-$cats = GetListOfCategories(); 
+$cats = GetListOfCategories();
 $breadcrumb = '<li><a href="/">Главная</a></li>';
 
-
+$promotions = true;
 
 // регистрация
 if($_POST['reg']){
@@ -57,6 +57,10 @@ if ($_POST['setFilter']) {
     else {
         redirect();
     }
+}
+if ($_POST['promotion']) {
+    header("Location: /?view=promotion");
+    exit;
 }
 //отправка формы со страницы детального описания книги (view=page), показывает все книги по автору или по издательству
 
@@ -117,7 +121,7 @@ elseif($_POST['addtofavorites']){
     $pid = mysql_real_escape_string(trim($_POST['product_id']));
 
     if ($pid){
-        
+
 
             $title = getProductTitleById($pid);
             if(!$_SESSION['auth']['user']){
@@ -179,7 +183,7 @@ elseif($_POST['new_rent'])
     $result = json_decode(file_get_contents($url, false, $context));
     if (!$result->success) $errors[] = '<li>Неверный результат проверки reCAPTCHA</li>';
     if ($errors) $rent_message = ['mess' => '<ul>'.implode('', $errors).'</ul>', 'type' => 'error'];
-    else 
+    else
     {
         unset($_POST);
         mail('nevzorova@bookmirs.ru', 'Заполнена форма "Аренда"', $mail, 'Content-Type: text/html;');
@@ -222,6 +226,10 @@ switch($view){
     case('contacts'):
         // Контакты
     break;
+    case('promotion'):
+        $view = 'promotion';
+        $shops = getShops();
+        break;
     case('compare'):
         $compare_books = getCompareData($_SESSION['compare']);
     break;
@@ -325,22 +333,22 @@ switch($view){
         total_quantity();
         redirect();
     break;
-    
+
     case('cart'):
          /* корзина */
          // получение способов доставки
         $shipping = getShippingMethod();
-        
+
         // пересчет товаров в корзине
         if(isset($_GET['id'], $_GET['qty'])){
             $product_id = abs((int)$_GET['id']);
             $qty = abs((int)$_GET['qty']);
-            
+
             $qty = $qty - $_SESSION['cart'][$product_id]['qty'];
             addtocart($product_id, $qty);
-            
+
             $_SESSION['total_sum'] = total_sum($_SESSION['cart']); // сумма заказа
-            
+
             total_quantity(); // кол-во товара в корзине + защита от ввода несуществующего ID товара
             redirect();
         }
@@ -357,7 +365,7 @@ switch($view){
             redirect();
         }
     break;
-    
+
     case('reg'):
         // регистрация
     break;

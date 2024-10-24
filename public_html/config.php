@@ -30,10 +30,10 @@ define('PRODUCTIMG', PATH.'media/');
 define('HOST', 'localhost');
 
 // пользователь
-define('USER', 'ooomirs_bookmirs');
+define('USER', 'root');
 
 // пароль
-define('PASS', 'A%*K5IN!');
+define('PASS', 'root');
 
 // БД
 define('DB', 'ooomirs_bookmirs');
@@ -43,6 +43,7 @@ define('TITLE', 'Книготорговая компания МИРС');
 
 // email администратора
 define('ADMIN_EMAIL', 'web@bookmirs.ru');
+
 
 mysql_connect(HOST, USER, PASS) or die('No connect to Server');
 mysql_select_db(DB) or die('No connect to DB');

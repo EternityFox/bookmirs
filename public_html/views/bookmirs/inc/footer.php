@@ -148,7 +148,8 @@
                     <li>Компания может самостоятельно принять решение и начислить бонусы в рамках маркетинговой акции,
                         определив количество начисляемых бонусов и срок их действия.
                     </li>
-                    <li>Бонусы не начисляются за покупку подарочной карты сети &laquo;МИРС&raquo;; офисной бумаги и товара, участвующего в маркетинговой
+                    <li>Бонусы не начисляются за покупку подарочной карты сети &laquo;МИРС&raquo;; офисной бумаги и
+                        товара, участвующего в маркетинговой
                         акции (если иное не предусмотрено условиям акции).
                     </li>
                     <li>Бонусы не начисляются на заказы интернет &ndash; магазина Точка24.рф.</li>
@@ -205,7 +206,8 @@
                 <li>Срок действия бонусов, начисленных по решению компании (в рамках маркетинговой акции) определяется
                     индивидуально решением компании.
                 </li>
-                <li>Бонусами не могут быть оплачены: подарочные карты сети &laquo;МИРС&raquo;; офисная бумага и товары, участвующие в
+                <li>Бонусами не могут быть оплачены: подарочные карты сети &laquo;МИРС&raquo;; офисная бумага и товары,
+                    участвующие в
                     маркетинговых акциях, если это предусмотрено условиями акции.
                 </li>
                 <li>Бонусами не могут быть оплачены заказы интернет - магазина Точка24.рф</li>
@@ -481,7 +483,8 @@
                 <li>Компания может самостоятельно принять решение и начислить бонусы в рамках маркетинговой акции,
                     определив количество начисляемых бонусов и срок их действия.
                 </li>
-                <li>Бонусы не начисляются за покупку подарочной карты сети &laquo;Плюшкин&raquo;; офисной бумаги и товара, участвующего в
+                <li>Бонусы не начисляются за покупку подарочной карты сети &laquo;Плюшкин&raquo;; офисной бумаги и
+                    товара, участвующего в
                     акции (если иное не предусмотрено условиям акции).
                 </li>
                 <li>Бонусы не начисляются на заказы интернет &ndash; магазина Точка24.рф.</li>
@@ -530,7 +533,8 @@
                 <li>Срок действия бонусов, начисленных по решению компании (в рамках маркетинговой акции) определяется
                     индивидуально решением компании.
                 </li>
-                <li>Бонусами не могут быть оплачены: подарочные карты сети &laquo;Плюшкин&raquo;; офисная бумага и товары, участвующие
+                <li>Бонусами не могут быть оплачены: подарочные карты сети &laquo;Плюшкин&raquo;; офисная бумага и
+                    товары, участвующие
                     в маркетинговых акциях, если это предусмотрено условиями акции.
                 </li>
                 <li>Бонусами не могут быть оплачены заказы интернет - магазина Точка24.рф</li>
@@ -852,139 +856,152 @@
         </div>
     </div>
 </div>
-<div class="container-fluid mt-5 footer-bg-img" id="scrollspyContacts">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-md-6 mt-4">
-                <ul class="nav flex-column">
-                    <li class="nav-item footer-head-title">Контакты</li>
-                    <li class="nav-item footer-text">График работы: с 9:00 до 18:00 часов (ежедневно)</li>                    
-                    <hr class="opacity-100 bg-dark">
-                    <li><div class="row align-items-center mb-4">
-                    <div class="col text-center-md">
-                    <div class="nav-item footer-head-text">Интернет магазин</div>
-                    <div class="nav-item footer-text"><a class="text-black"
+<?php if ($view == 'promotion'): ?>
+    <div class="container-fluid footer-bg-img promotion-footer" id="scrollspyContacts">
+<?php else: ?>
+    <div class="container-fluid mt-5 footer-bg-img" id="scrollspyContacts">
+<?php endif; ?>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 mt-4">
+                    <ul class="nav flex-column">
+                        <li class="nav-item footer-head-title">Контакты</li>
+                        <li class="nav-item footer-text">График работы: с 9:00 до 18:00 часов (ежедневно)</li>
+                        <hr class="opacity-100 bg-dark">
+                        <li>
+                            <div class="row align-items-center mb-4">
+                                <div class="col text-center-md">
+                                    <div class="nav-item footer-head-text">Интернет магазин</div>
+                                    <div class="nav-item footer-text"><a class="text-black"
                                                                          href="tel:+88003016666"><span
-                                    class="footer-bold-text"> 8 800 301 6666</span></a></div>
-                    <div class="nav-item footer-text"><a class="text-black"
+                                                    class="footer-bold-text"> 8 800 301 6666</span></a></div>
+                                    <div class="nav-item footer-text"><a class="text-black"
                                                                          href="https://wa.me/79241060025"><span
-                                    class="footer-bold-text">+7 (924) 406-00-25 (WhatsApp)</span></a></div>
-                    <div class="nav-item footer-text"><a href="" data-bs-toggle="modal"
-                                                        data-bs-target="#modalSendMessage"
-                                                        class="text-black">tochka24@bookmirs.ru</a></div>
-                    <div class="nav-item footer-head-text mt-2">Технический отдел</div>
-                        <div class="nav-item footer-text"><a href="" data-bs-toggle="modal"
-                                                             data-bs-target="#modalSendMessage"
-                                                             class="text-black">tochka24sait@yandex.ru</a></div>
-                    </div>
-                    <div class="col ps-4-md ms-4-md">
-                    <div class="nav-item footer-head-text">Главный офис</div>
-                    <div class="nav-item footer-text"><a class="text-black" href="tel:+74212470047"><span
-                                    class="footer-bold-text">+7 (4212) 47-00-47</span></a>                                        
-                    <a class="nav-link regular-14 link-primary d-md-none d- p-0 mt-2">Показать на карте</a>
-                    <div class="nav-item footer-text"><a href="" data-bs-toggle="modal"
-                                                                           data-bs-target="#modalSendMessage"
-                                                                           class="text-black">mirs@bookmirs.ru</a></div>
-                    <div class="nav-item footer-head-text">Отдел книг</div>
-                    <div class="nav-item footer-text"><a href="" data-bs-toggle="modal"
-                                                                           data-bs-target="#modalSendMessage"
-                                                                           class="text-black">kds@bookmirs.ru</a>
-                    </div>
-                    <div class="nav-item footer-head-text">Отдел канцтоваров</div>
-                    <div class="nav-item footer-text"><a href="" data-bs-toggle="modal"
-                                                                           data-bs-target="#modalSendMessage"
-                                                                           class="text-black">sale_kanc@bookmirs.ru</a>
-                    
-                    </div>
-                    </div>
-                    </li>
-                    <li class="nav-item footer-text">
-                        <div class="d-flex flex-wrap flex-row mt-2 justify-content-evenly"><a href="" data-bs-toggle="modal"
-                                                                                              data-bs-target="#modalViewBonusCard"
-                                                                                              class="text-black">Бонусные
-                                карты</a><a href="" data-bs-toggle="modal" data-bs-target="#modalViewGiftsCard"
-                                            class="text-black">Подарочные
-                                карты</a></div>
-                    </li>
-                    <hr class="opacity-100 bg-dark">
-                    <div class="d-flex flex-row mb-4">
-                        <a class="navbar-brand me-3" href="https://wa.me/79241091825">
-                            <img src="http://bookmirs.ru/views/bookmirs/images/WhatsApp_logo.svg" alt="Логотип WhatsApp"
-                                 class="footer-logo">
-                        </a>
-                        <a class="navbar-brand me-3" href="https://vk.com/mirs_dv">
-                            <img src="http://bookmirs.ru/views/bookmirs/images/VK_Logo.svg" alt="Логотип ВК"
-                                 class="footer-logo">
-                        </a>
-                        <a class="navbar-brand" href="https://t.me/mirs_dv">
-                            <img src="http://bookmirs.ru/views/bookmirs/images/telegram.svg" alt="Логотип Телеграмм"
-                                 class="footer-logo">
-                        </a>
-                    </div>
-                </ul>
-            </div>
-            <div id="map-adress" class="col-md-6 mt-4 d-none d-md-block">
-                <aside>
-                    <div class="card text-white text-center border-primary">
-                        <div class="card-header bg-primary map-header-text">
-                            <strong>ООО "МИРС"</strong> - Промышленнаяд.11
+                                                    class="footer-bold-text">+7 (924) 406-00-25 (WhatsApp)</span></a>
+                                    </div>
+                                    <div class="nav-item footer-text"><a href="" data-bs-toggle="modal"
+                                                                         data-bs-target="#modalSendMessage"
+                                                                         class="text-black">tochka24@bookmirs.ru</a>
+                                    </div>
+                                    <div class="nav-item footer-head-text mt-2">Технический отдел</div>
+                                    <div class="nav-item footer-text"><a href="" data-bs-toggle="modal"
+                                                                         data-bs-target="#modalSendMessage"
+                                                                         class="text-black">tochka24sait@yandex.ru</a>
+                                    </div>
+                                </div>
+                                <div class="col ps-4-md ms-4-md">
+                                    <div class="nav-item footer-head-text">Главный офис</div>
+                                    <div class="nav-item footer-text"><a class="text-black"
+                                                                         href="tel:+74212470047"><span
+                                                    class="footer-bold-text">+7 (4212) 47-00-47</span></a>
+                                        <a class="nav-link regular-14 link-primary d-md-none d- p-0 mt-2">Показать на
+                                            карте</a>
+                                        <div class="nav-item footer-text"><a href="" data-bs-toggle="modal"
+                                                                             data-bs-target="#modalSendMessage"
+                                                                             class="text-black">mirs@bookmirs.ru</a>
+                                        </div>
+                                        <div class="nav-item footer-head-text">Отдел книг</div>
+                                        <div class="nav-item footer-text"><a href="" data-bs-toggle="modal"
+                                                                             data-bs-target="#modalSendMessage"
+                                                                             class="text-black">kds@bookmirs.ru</a>
+                                        </div>
+                                        <div class="nav-item footer-head-text">Отдел канцтоваров</div>
+                                        <div class="nav-item footer-text"><a href="" data-bs-toggle="modal"
+                                                                             data-bs-target="#modalSendMessage"
+                                                                             class="text-black">sale_kanc@bookmirs.ru</a>
+
+                                        </div>
+                                    </div>
+                        </li>
+                        <li class="nav-item footer-text">
+                            <div class="d-flex flex-wrap flex-row mt-2 justify-content-evenly"><a href=""
+                                                                                                  data-bs-toggle="modal"
+                                                                                                  data-bs-target="#modalViewBonusCard"
+                                                                                                  class="text-black">Бонусные
+                                    карты</a><a href="" data-bs-toggle="modal" data-bs-target="#modalViewGiftsCard"
+                                                class="text-black">Подарочные
+                                    карты</a></div>
+                        </li>
+                        <hr class="opacity-100 bg-dark">
+                        <div class="d-flex flex-row mb-4">
+                            <a class="navbar-brand me-3" href="https://wa.me/79241091825">
+                                <img src="http://bookmirs.ru/views/bookmirs/images/WhatsApp_logo.svg"
+                                     alt="Логотип WhatsApp"
+                                     class="footer-logo">
+                            </a>
+                            <a class="navbar-brand me-3" href="https://vk.com/mirs_dv">
+                                <img src="http://bookmirs.ru/views/bookmirs/images/VK_Logo.svg" alt="Логотип ВК"
+                                     class="footer-logo">
+                            </a>
+                            <a class="navbar-brand" href="https://t.me/mirs_dv">
+                                <img src="http://bookmirs.ru/views/bookmirs/images/telegram.svg" alt="Логотип Телеграмм"
+                                     class="footer-logo">
+                            </a>
                         </div>
-                        <div class="card-body p-2 p-lg-3 bg-opacity-25">
-                            <div id="map_footer"></div>
+                    </ul>
+                </div>
+                <div id="map-adress" class="col-md-6 mt-4 d-none d-md-block">
+                    <aside>
+                        <div class="card text-white text-center border-primary">
+                            <div class="card-header bg-primary map-header-text">
+                                <strong>ООО "МИРС"</strong> - Промышленнаяд.11
+                            </div>
+                            <div class="card-body p-2 p-lg-3 bg-opacity-25">
+                                <div id="map_footer"></div>
+                            </div>
                         </div>
-                    </div>
-                </aside>
+                    </aside>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<section class="copyright">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 copyright ">
-                <small>
-                    ©
-                    <script type="text/javascript">var mdate = new Date();
-                        document.write(mdate.getFullYear());</script>
-                    ООО "МИРС" Все права защищены
-                </small>
-            </div>
-            <div class="col-md-4 poweredby">
-                <a class="footer-logo" href="/" title="ООО МИРС"></a>
+    <section class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 copyright ">
+                    <small>
+                        ©
+                        <script type="text/javascript">var mdate = new Date();
+                            document.write(mdate.getFullYear());</script>
+                        ООО "МИРС" Все права защищены
+                    </small>
+                </div>
+                <div class="col-md-4 poweredby">
+                    <a class="footer-logo" href="/" title="ООО МИРС"></a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-<script type="text/javascript">
-    ymaps.ready(init);
+    </section>
+    <script type="text/javascript">
+        ymaps.ready(init);
 
-    function init() {
-        myMap1 = new ymaps.Map('map_footer', {
-            center: [48.492204, 135.099509],
-            zoom: 9
-        });
-
-        ymaps.geocode('г. Хабаровск, ул. Промышленная 11', {
-            results: 1
-        }).then(function (res) {
-            var firstGeoObject = res.geoObjects.get(0),
-                coords = firstGeoObject.geometry.getCoordinates(),
-                bounds = firstGeoObject.properties.get('boundedBy');
-            myMap1.setBounds(bounds, {
-                checkZoomRange: true
+        function init() {
+            myMap1 = new ymaps.Map('map_footer', {
+                center: [48.492204, 135.099509],
+                zoom: 9
             });
 
+            ymaps.geocode('г. Хабаровск, ул. Промышленная 11', {
+                results: 1
+            }).then(function (res) {
+                var firstGeoObject = res.geoObjects.get(0),
+                    coords = firstGeoObject.geometry.getCoordinates(),
+                    bounds = firstGeoObject.properties.get('boundedBy');
+                myMap1.setBounds(bounds, {
+                    checkZoomRange: true
+                });
 
-            var myPlacemark = new ymaps.Placemark(coords, {
-                iconCaption: 'ООО МИРС',
-                balloonContent: 'г. Хабаровск, ул. Промышленная 11'
-            }, {
-                preset: 'islands#icon',
-                iconColor: '#EF7F1A'
+
+                var myPlacemark = new ymaps.Placemark(coords, {
+                    iconCaption: 'ООО МИРС',
+                    balloonContent: 'г. Хабаровск, ул. Промышленная 11'
+                }, {
+                    preset: 'islands#icon',
+                    iconColor: '#EF7F1A'
+                });
+
+                myMap1.geoObjects.add(myPlacemark);
             });
+        }
 
-            myMap1.geoObjects.add(myPlacemark);
-        });
-    }
-
-</script>
+    </script>
