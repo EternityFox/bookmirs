@@ -93,6 +93,7 @@ function deleteNews()
     $res = mysql_query($query) or die(mysql_error());
 }
 
+
 function getVacancies($limit = '', $orderBy = 'vacancies.add_date')
 {
 
@@ -144,6 +145,69 @@ function getVacancyDetail($vid)
     $res = mysql_query($query);
     $vacancyDetail = mysql_fetch_assoc($res);
     return $vacancyDetail;
+}
+
+
+function editQuestion()
+{
+    $error = '';
+    $name = isset($_POST['name']) && $_POST['name'] ? $_POST['name'] : "Администратор";
+    $email = isset($_POST['email']) && $_POST['email'] ? $_POST['email'] : "no-reply@bookmirs.ru";
+    $question = $_POST['question'];
+    $answer = $_POST['answer'];
+    $now = time();
+    $updated_at = date('Y-m-d H:i:s', $now);
+    $active = $_POST['active'];
+    $question_id = $_GET['question_id'];
+    if ($question_id) {
+        $query = "UPDATE questions SET name='$name', email='$email', question='$question', answer='$answer', updated_at='$updated_at', active='$active' WHERE id='$question_id'";
+        $res = mysql_query($query) or die(mysql_error());
+    }
+}
+
+function getQuestions($limit = '', $orderBy = 'created_at')
+{
+    if ($limit) {
+        $limit = " LIMIT " . $limit;
+    }
+    $query = 'SELECT id as vid, name, email, question, answer, created_at, active FROM questions ORDER by ' . $orderBy . ' DESC' . $limit;
+    $res = mysql_query($query) or die(mysql_query());
+    $questions = array();
+    while ($row = mysql_fetch_assoc($res)) {
+        $questions[] = $row;
+    }
+    return $questions;
+}
+
+function addQuestion()
+{
+    $error = '';
+    $name = isset($_POST['name']) && $_POST['name'] ? $_POST['name'] : "Администратор";
+    $email = isset($_POST['email']) && $_POST['email'] ? $_POST['email'] : "no-reply@bookmirs.ru";
+    $question = $_POST['question'];
+    $answer = $_POST['answer'];
+    $now = time();
+    $createt_add = date('Y-m-d H:i:s', $now);
+    $updated_at = date('Y-m-d H:i:s', $now);
+    $active = $_POST['active'];
+    $query = "INSERT INTO questions (name, email, question, answer, created_at, updated_at, active)
+			VALUES ('$name', '$email', '$question', '$answer', '$createt_add', '$updated_at', '$active')";
+    $res = mysql_query($query) or die(mysql_error());
+}
+
+function deleteQuestion()
+{
+    $question_id = abs((int)$_POST['id']);
+    $query = "DELETE FROM questions WHERE id='" . $question_id . "'";
+    $res = mysql_query($query) or die(mysql_error());
+}
+
+function getQuestionDetail($vid)
+{
+    $query = "SELECT * FROM questions WHERE id='" . $vid . "' LIMIT 1";
+    $res = mysql_query($query);
+    $questionDetail = mysql_fetch_assoc($res);
+    return $questionDetail;
 }
 
 function getShopDetail($shop_id)

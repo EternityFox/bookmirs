@@ -69,6 +69,18 @@ function getVacancy($vacancy_id)
     $vacancy = mysql_fetch_assoc($res);
     return $vacancy;
 }
+function getQuestions()
+{
+    $query = 'SELECT * FROM questions WHERE active=1';
+    $res = mysql_query($query) or die(mysql_query());
+    $questions = array();
+    while($row = mysql_fetch_assoc($res))
+    {
+        $questions[] = $row;
+    }
+    return $questions;
+
+}
 function getNewsDetail($news_id)
 {
     $query = "SELECT * FROM news WHERE news_id='".$news_id."' LIMIT 1";

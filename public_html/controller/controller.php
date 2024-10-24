@@ -229,6 +229,7 @@ switch($view){
     case('promotion'):
         $view = 'promotion';
         $shops = getShops();
+        $questions= getQuestions();
         break;
     case('compare'):
         $compare_books = getCompareData($_SESSION['compare']);

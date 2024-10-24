@@ -13,12 +13,17 @@
         position: relative;
         overflow: hidden;
     }
-    .promotion-footer .container{
+
+    .promotion-footer .container {
         margin-top: 0;
     }
 
     .promotion-background-gradient {
         background: linear-gradient(90deg, rgba(43, 70, 116, 1) 0%, rgba(64, 95, 130, 1) 17%, rgba(85, 143, 164, 1) 50%, rgba(70, 108, 140, 1) 82%, rgba(48, 75, 121, 1) 100%);
+    }
+    .accordion-body p{
+        margin: 0;
+        padding: 0;
     }
 
     #scrollspyPrizes, #scrollspyParticipation {
@@ -59,7 +64,8 @@
         color: #175CA8;
         font-size: 20px;
     }
-    #scrollspyQuestion{
+
+    #scrollspyQuestion {
         padding-bottom: 80px;
     }
 
@@ -73,11 +79,19 @@
         justify-content: space-evenly;
     }
 
+    .accordion-link {
+        color: #175CA8;
+    }
+
     .promotion-header-info {
         display: flex;
         flex-direction: column;
         width: 820px;
         gap: 16px;
+    }
+
+    .accordion-header {
+        font-weight: 600;
     }
 
     .promotion-description {
@@ -257,11 +271,13 @@
     .faq-right button {
         width: 100%;
     }
-    .form-checkbox{
+
+    .form-checkbox {
         display: flex;
         align-items: flex-start
     }
-    .form-checkbox .hidden{
+
+    .form-checkbox .hidden {
         position: absolute;
         top: 0;
         left: 0;
@@ -281,7 +297,8 @@
         box-sizing: border-box;
         padding: 0;
     }
-    .form-checkbox .label-dot{
+
+    .form-checkbox .label-dot {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -303,7 +320,8 @@
         border-radius: .5rem;
         cursor: pointer;
     }
-    .form-checkbox .label-dot:after{
+
+    .form-checkbox .label-dot:after {
         content: "";
         -ms-flex-negative: 0;
         flex-shrink: 0;
@@ -312,20 +330,24 @@
         background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTS45ODEgNS4xbDIuODYgMi44NmExIDEgMCAwMDEuNDE0IDBsNi43LTYuNyIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiLz48L3N2Zz4=) no-repeat 50% / contain;
         opacity: 0;
     }
-    .form-checkbox input:checked+.label-dot:after{
+
+    .form-checkbox input:checked + .label-dot:after {
         opacity: 1;
     }
-    .form-checkbox .label-text{
+
+    .form-checkbox .label-text {
         margin: 0;
         font-weight: 400;
         font-size: 1rem;
         line-height: 1.1;
     }
-    .form-checkbox input:checked+.label-dot{
+
+    .form-checkbox input:checked + .label-dot {
         background: #094383;
         border-color: #094383;
     }
-    .form-checkbox .label-text a{
+
+    .form-checkbox .label-text a {
         color: #094383;
         text-decoration: underline;
     }
@@ -343,7 +365,8 @@
                     рублей, регестрируйте купон и получайте призы
                 </div>
                 <button class="promotion-button btn btn-blue-mirs" data-bs-toggle="modal"
-                        data-bs-target="#modalViewPromotionRegistration">Зарегестрировать купон</button>
+                        data-bs-target="#modalViewPromotionRegistration">Зарегестрировать купон
+                </button>
             </div>
         </div>
         <div class="floating-items" id="floating-items-container">
@@ -448,57 +471,28 @@
     <div class="container" id="scrollspyQuestion">
         <h2 class="promotion-prizes-title head-text text-white">Вопросы и ответы</h2>
         <div class="faq-container">
-            <!-- Левый блок с вопросами и ответами -->
             <div class="faq-left">
-                <div class="accordion" id="accordionExample">
-                    <!-- Вопрос 1 -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                Какие сроки проведения акции?
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                             data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                Акция будет проходить с 01.11.2024 по 30.11.2024 (включительно).
+                <?php if ($questions): ?>
+                    <div class="accordion" id="accordionExample">
+                        <?php foreach ($questions as $question): ?>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading<?=$question['id']?>">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapse<?=$question['id']?>" aria-expanded="false"
+                                            aria-controls="collapse<?=$question['id']?>">
+                                        <?=$question['question']?>
+                                    </button>
+                                </h2>
+                                <div id="collapse<?=$question['id']?>" class="accordion-collapse collapse" aria-labelledby="heading<?=$question['id']?>"
+                                     data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <?=$question['answer']?>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
-
-                    <!-- Вопрос 2 -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                В каких городах и магазинах проводится акция?
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                             data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                В г.Хабаровск, г.Владивосток.
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Вопрос 3 -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Что необходимо сделать для участия в акции?
-                            </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                             data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                1. Совершить единоразовую покупку на сумму не менее 1 000 рублей.
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php endif; ?>
             </div>
 
             <!-- Правый блок с текстом и кнопкой -->
@@ -523,22 +517,21 @@
             </div>
             <div class="col-12 modal-title text-center w-100 bold-30">Задать вопрос</div>
             <div class="modal-body">
+                <div id="resultMessage" class="mt-3"></div>
                 <div class="container-fluid">
                     <div class="row justify-content-center">
                         <div class="col-12">
-                            <form role="form" method="post" id="sendMessage">
-                                <label for="name" class="form-label semibold-24">Имя</label>
+                            <form method="POST" role="form" id="sendQuestion">
+                                <label for="name" class="form-label semibold-24">ФИО</label>
                                 <input type="text" class="form-control form-control-lg mb-3 regular-14" id="name"
-                                       name="card">
-                                <label for="phone" class="form-label semibold-24">Email</label>
+                                       name="name" placeholder="Иван Иванов Иванович">
+                                <label for="email" class="form-label semibold-24">Email</label>
                                 <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                                        class="form-control form-control-lg mb-3 regular-14" id="email"
                                        name="email" placeholder="example@mail.ru" required>
-                                <label for="subject_appeal" class="form-label semibold-24">Тема обращения</label>
-                                <input type="text" class="form-control form-control-lg mb-3 regular-14" id="subject_appeal"
-                                       name="subject_appeal" required>
-                                <label for="phone" class="form-label semibold-24">Текст обращения</label>
-                                <textarea class="form-control regular-14" id="message" style="height: 150px" required></textarea>
+                                <label for="question" class="form-label semibold-24">Вопрос</label>
+                                <textarea class="form-control regular-14" id="question" style="height: 150px"
+                                          required placeholder="Введите ваш вопрос"></textarea>
                                 <button class="btn btn-blue-mirs text-white btn-lg my-3 mx-auto d-block"
                                         name="submit" id="btnSend"
                                         type="submit">Отправить
@@ -579,15 +572,15 @@
                                 <label for="coupon" class="form-label semibold-24">Купон</label>
                                 <input type="text" class="form-control form-control-lg mb-3 regular-14" id="coupon"
                                        name="coupon">
-                                <label for="check" class="form-label semibold-24">Чек</label>
-                                <input type="text" class="form-control form-control-lg mb-3 regular-14" id="check"
-                                       name="check">
                                 <div class="form-checkboxes">
                                     <div class="form-checkbox">
                                         <input id="check-os-1" type="checkbox" class="hidden">
                                         <label for="check-os-1" class="label-dot"></label>
                                         <label for="check-os-1" class="label-text">
-                                            Я даю согласие на обработку<br> <a href="./personal-data.pdf" target="_blank">персональных данных</a></label></div></div>
+                                            Я даю согласие на обработку<br> <a href="./personal-data.pdf"
+                                                                               target="_blank">персональных
+                                                данных</a></label></div>
+                                </div>
                                 <button class="btn btn-blue-mirs text-white btn-lg my-3 mx-auto d-block"
                                         name="submit" id="btnSend"
                                         type="submit">Отправить
