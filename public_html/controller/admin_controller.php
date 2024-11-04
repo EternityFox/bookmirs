@@ -45,6 +45,10 @@ if ($_POST['add_news']) {
     addQuestion();
     header("Location: /admin/?view=questions");
     exit;
+} elseif ($_POST['add_coupon']) {
+    addCoupon();
+    header("Location: /admin/?view=coupons");
+    exit;
 } elseif ($_POST['delete_question']) {
     deleteQuestion();
     redirect();
@@ -95,7 +99,11 @@ switch ($view) {
         $news_id = abs((int)$_GET['news_id']);
         $news = getNewsDetail($news_id);
         break;
-
+    case('coupons'):
+        $coupons = getCoupons();
+        break;
+    case('add_coupon'):
+        break;
     case('questions'):
         $questions = getQuestions();
         break;

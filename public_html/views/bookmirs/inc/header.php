@@ -35,6 +35,7 @@
     <script src="<?= TEMPLATE ?>js/hoverIntent.js"></script>
     <script src="<?= TEMPLATE ?>js/superfish.js"></script>
     <script src="<?= TEMPLATE ?>js/jquery.cookie.js"></script>
+    <script src="<?= TEMPLATE ?>/js/jquery.maskedinput.min.js"></script>
     <script type="text/javascript" src="<?= TEMPLATE ?>js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<?= TEMPLATE ?>js/owl.carousel.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"
@@ -143,13 +144,14 @@
 
 <? if ($_SESSION['auth']['role'] != 8 && $_GET['login'] != 'shop'): ?>
 <?php if ($view == 'promotion'): ?>
-<nav class="navbar navbar-expand-lg py-lg-4 pt-2 fixed-top fixed-top promotion-header" id="navbar-scroll">
+<div class="fixed-top"></div>
+<nav class="navbar navbar-expand-lg py-lg-4 pt-2 promotion-header" id="navbar-scroll">
     <?php else: ?>
-    <nav class="navbar navbar-expand-lg py-lg-4 pt-2 fixed-top fixed-top" id="navbar-scroll">
+    <nav class="navbar navbar-expand-lg py-lg-4 pt-2 fixed-top" id="navbar-scroll">
         <?php endif; ?>
         <div class="container">
                 <?php if ($view == 'promotion'): ?>
-                <a href="/">
+                <a href="/" class="promotion-logo">
             <img src="http://bookmirs.ru/views/test/images/logo_mirs.png" alt="Логотип компании" width="150"
                  height="50" class="filter-drop-shadow promotion-logo">
                  </a>
@@ -174,6 +176,14 @@
                         <a class="nav-link promotion-link" href="#scrollspyContacts">Контакты</a>
                     </li>
                                         </ul>
+                <div class="d-flex">
+                    <div class="navBtn">
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                        <div class="line3"></div>
+                    </div>
+                </div>
+            </div>
                 <?php else: ?>
                 <a href="/">
             <img src="http://bookmirs.ru/views/test/images/logo_mirs.png" alt="Логотип компании" width="150"
@@ -197,7 +207,11 @@
                     <li class="nav-item navLi">
                         <a class="nav-link" href="./#scrollspyVacancys">Вакансии</a>
                     </li>
-
+                    <?php if($promotions):?>
+                        <li class="nav-item navLi">
+                            <a class="nav-link" href="/promotion">Акция</a>
+                        </li>
+                    <?php endif;?>
                     <li class="nav-item navLi">
                         <a class="nav-link" href="#scrollspyContacts">Контакты</a>
                     </li>

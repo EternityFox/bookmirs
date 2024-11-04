@@ -9,4 +9,5 @@
 	<li><a href="/admin/?view=equipment">Оборудование</a></li>
 	<li><a href="/admin/?view=banners">Баннеры</a></li>
 	<li><a href="/admin/?view=questions">Вопросы</a></li>
+	<li><a href="/admin/?view=coupons">Купоны</a></li>
 </ul>

@@ -164,7 +164,29 @@ function editQuestion()
         $res = mysql_query($query) or die(mysql_error());
     }
 }
-
+function getCoupons($limit = '', $orderBy = 'updated_at')
+{
+    if ($limit) {
+        $limit = " LIMIT " . $limit;
+    }
+    $query = 'SELECT id as vid, code, name, email, phone, updated_at FROM coupons WHERE phone IS NOT NULL  ORDER by ' . $orderBy . ' DESC' . $limit;
+    $res = mysql_query($query) or die(mysql_query());
+    $coupons = array();
+    while ($row = mysql_fetch_assoc($res)) {
+        $coupons[] = $row;
+    }
+    return $coupons;
+}
+function addCoupon()
+{
+    $error = '';
+    $code = $_POST['code'];
+    $now = time();
+    $createt_add = date('Y-m-d H:i:s', $now);
+    $query = "INSERT INTO coupons (code,  created_at)
+			VALUES ('$code', '$createt_add')";
+    $res = mysql_query($query) or die(mysql_error());
+}
 function getQuestions($limit = '', $orderBy = 'created_at')
 {
     if ($limit) {
