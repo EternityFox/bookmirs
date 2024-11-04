@@ -36,6 +36,6 @@
     </form>
 
 <?php else: ?>
-    <div class="alert alert-danger" role="alert">Ошибка редактирования новости</div>
+    <div class="alert alert-danger" role="alert">Ошибка редактирования вопроса</div>
 <?php endif;?>
 

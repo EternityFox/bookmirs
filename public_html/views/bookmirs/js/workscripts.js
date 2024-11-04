@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    var maskedInput = function () {
+        $('input[name="phone"]').mask('+7(999) 999-99-99');
+    }
+    maskedInput();
     /*$("form").on('submit', function (e) {
 
     });*/
@@ -14,14 +18,42 @@ $(document).ready(function () {
             },
             success: function (response) {
                 if (response) {
-                    $('#resultMessage').html('<div class="alert alert-success">' + response + '</div>');
+                    $('#modalViewPromotionQuestion #resultMessage').html('<div class="alert alert-success">' + response + '</div>');
                     $('#sendQuestion')[0].reset();
                 } else {
-                    $('#resultMessage').html('<div class="alert alert-danger">Проверьте, что все поля были заполнены</div>');
+                    $('#modalViewPromotionQuestion #resultMessage').html('<div class="alert alert-danger">Проверьте, что все поля были заполнены</div>');
                 }
             },
             error: function () {
-                $('#resultMessage').html('<div class="alert alert-danger">Произошла ошибка при отправке запроса.</div>');
+                $('#modalViewPromotionQuestion #resultMessage').html('<div class="alert alert-danger">Произошла ошибка при отправке запроса.</div>');
+            }
+        });
+    });
+
+    $('#sendCoupon').on('submit', function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: '/functions/ajax_send_coupon.php',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                coupon: $('#sendCoupon #coupon').val(),
+                name: $('#sendCoupon #name').val(),
+                email: $('#sendCoupon #email').val(),
+                phone: $('#sendCoupon #phone').val(),
+                agree: $("#sendCoupon #check-os-1").is(":checked")
+            },
+            success: function (response) {
+                console.log(response);
+                if (response.success) {
+                    $('#modalViewPromotionRegistration #resultMessage').html('<div class="alert alert-success">' + response.message + '</div>');
+                    //$('#sendCoupon')[0].reset();
+                } else {
+                    $('#modalViewPromotionRegistration #resultMessage').html('<div class="alert alert-danger">' + response.message + '</div>');
+                }
+            },
+            error: function () {
+                $('#modalViewPromotionRegistration #resultMessage').html('<div class="alert alert-danger">Произошла ошибка при отправке запроса.</div>');
             }
         });
     });

@@ -156,7 +156,7 @@ header .intro-text {
     align-items: center;
 }
 
-.btn-blue-mirs:hover, .btn-blue-mirs:focus {
+.btn-blue-mirs:hover, .btn-blue-mirs:focus, .promotion-telegram:hover {
     animation: pulse 1s;
     box-shadow: 0 0 0 2em transparent;
 }
@@ -528,6 +528,10 @@ footer .btn-blue-mirs {
 .loaded { display: none; }
 .promotion-header{
     position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
 }
 .promotion-header .container{
     margin-top: 4px;
@@ -582,11 +586,11 @@ footer .btn-blue-mirs {
         width: 100%;
         top: 0;
         flex-direction: column;
-        border-radius: 0 0 25px 25px;
-        gap: 2vh;
+        border-radius: 0 0 25px 25px!important;
+        gap: 2vh!important;
         align-items: center;
-        padding: 5vh 15vw;
-        background: linear-gradient(133.66deg, #0196BE 22.61%, #72C44B 70.65%);
+        padding: 5vh 15vw!important;
+        background: linear-gradient(133.66deg, #0196BE 22.61%, #72C44B 70.65%)!important;
         font-size: 16px;
         letter-spacing: 1px;
         backdrop-filter: blur(5px);
