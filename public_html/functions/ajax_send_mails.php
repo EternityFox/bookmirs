@@ -14,56 +14,49 @@ if ($_POST) {
         die();
     }
     if (!$phone) {
-        $message = $message . ' <-> Обратный e-mail: ' . $email . ' <-> Обратный номер телефона: ' . $phone . ' <-> Имя отправителя: ' . $name;
+        $message = $message . ' <br><br><br><-> Обратный e-mail: ' . $email . ' <-> Обратный номер телефона: ' . $phone . ' <-> Имя отправителя: ' . $name;
     } else {
-        $message = $message . ' <-> Обратный e-mail: ' . $email . ' <-> Имя отправителя: ' . $name;
+        $message = $message . '<br><br><br> <-> Обратный e-mail: ' . $email . ' <-> Имя отправителя: ' . $name;
     }
-    function mime_header_encode($str, $data_charset, $send_charset)
+
+    $host = 'smtp.bookmirs.ru';
+    $port = 587;
+    $username = 'tochka24';
+    $password = 'QWERTY';
+    $from = 'robot@bookmirs.ru';
+
+    $socket = fsockopen($host, $port, $errno, $errstr, 30);
+    if (!$socket) {
+        die("Не удалось подключиться: $errstr ($errno)");
+    }
+
+    function sendCommand($socket, $command)
     {
-        if ($data_charset != $send_charset)
-            $str = iconv($data_charset, $send_charset . '//IGNORE', $str);
-        return ('=?' . $send_charset . '?B?' . base64_encode($str) . '?=');
+        fputs($socket, $command . "\r\n");
+        return fgets($socket, 512);
     }
 
-    class TEmail
-    {
-        public $from_email;
-        public $from_name;
-        public $to_email;
-        public $to_name;
-        public $subject;
-        public $data_charset = 'UTF-8';
-        public $send_charset = 'windows-1251';
-        public $body = '';
-        public $type = 'text/plain';
+    echo sendCommand($socket, "HELO localhost");
+    echo sendCommand($socket, "AUTH LOGIN");
+    echo sendCommand($socket, base64_encode($username));
+    echo sendCommand($socket, base64_encode($password));
+    echo sendCommand($socket, "MAIL FROM: <$from>");
+    echo sendCommand($socket, "RCPT TO: <$sender>");
+    echo sendCommand($socket, "DATA");
 
-        function send()
-        {
-            $dc = $this->data_charset;
-            $sc = $this->send_charset;
-            $enc_to = mime_header_encode($this->to_name, $dc, $sc) . ' <' . $this->to_email . '>';
-            $enc_subject = mime_header_encode($this->subject, $dc, $sc);
-            $enc_from = mime_header_encode($this->from_name, $dc, $sc) . ' <' . $this->from_email . '>';
-            $enc_body = $dc == $sc ? $this->body : iconv($dc, $sc . '//IGNORE', $this->body);
-            $headers = '';
-            $headers .= "Mime-Version: 1.0\r\n";
-            $headers .= "Content-type: " . $this->type . "; charset=" . $sc . "\r\n";
-            $headers .= "From: " . $enc_from . "\r\n";
-            return mail($enc_to, $enc_subject, $enc_body, $headers);
-        }
+    $headers = "From: $from\r\n";
+    $headers .= "To: $sender\r\n";
+    $headers .= "Subject: Ответ на ваш вопрос на сайте bookmirs.ru\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-type: text/html; charset=UTF-8\r\n";
 
-    }
+    $fullMessage = $headers . "\r\n" . $message . "\r\n.";
+    echo sendCommand($socket, $fullMessage);
+    echo sendCommand($socket, "QUIT");
 
-    $emailgo = new TEmail;
-    $emailgo->from_email = $email;
-    $emailgo->from_name = $name;
-    $emailgo->to_email = $sender;
-    $emailgo->to_name = 'Администрация сайта bookmirs.ru';
-    $emailgo->subject = 'С сайта Bookmirs.ru был задан вопрос';
-    $emailgo->body = $message;
-    $emailgo->send();
-    $json['error'] = 0;
-    echo json_encode($json);
+    fclose($socket);
+
+
 } else {
     echo 'GET LOST!';
 }
