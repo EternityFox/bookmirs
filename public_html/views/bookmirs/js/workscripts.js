@@ -47,7 +47,7 @@ $(document).ready(function () {
                 console.log(response);
                 if (response.success) {
                     $('#modalViewPromotionRegistration #resultMessage').html('<div class="alert alert-success">' + response.message + '</div>');
-                    //$('#sendCoupon')[0].reset();
+                    $('#sendCoupon')[0].reset();
                 } else {
                     $('#modalViewPromotionRegistration #resultMessage').html('<div class="alert alert-danger">' + response.message + '</div>');
                 }
