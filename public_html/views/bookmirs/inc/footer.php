@@ -828,6 +828,7 @@
             </div>
             <div class="col-12 modal-title text-center w-100 bold-30">Отправить сообщение</div>
             <div class="modal-body">
+                <div id="resultMessage" class="mt-3"></div>
                 <div class="container-fluid">
                     <div class="row justify-content-center">
                         <div class="col-12">

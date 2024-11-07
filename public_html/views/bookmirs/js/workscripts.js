@@ -48,14 +48,14 @@ $(document).ready(function () {
             },
             success: function (response) {
                 if (response) {
-                    $('#modalViewPromotionQuestion #resultMessage').html('<div class="alert alert-success">' + response + '</div>');
-                    $('#sendQuestion')[0].reset();
+                    $('#modalSendMessage #resultMessage').html('<div class="alert alert-success">' + response + '</div>');
+                    $('#sendMessage')[0].reset();
                 } else {
-                    $('#modalViewPromotionQuestion #resultMessage').html('<div class="alert alert-danger">Проверьте, что все поля были заполнены</div>');
+                    $('#modalSendMessage #resultMessage').html('<div class="alert alert-danger">Проверьте, что все поля были заполнены</div>');
                 }
             },
             error: function () {
-                $('#modalViewPromotionQuestion #resultMessage').html('<div class="alert alert-danger">Произошла ошибка при отправке запроса.</div>');
+                $('#modalSendMessage #resultMessage').html('<div class="alert alert-danger">Произошла ошибка при отправке запроса.</div>');
             }
         });
     });
