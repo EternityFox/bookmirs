@@ -48,7 +48,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 if (response) {
-                    $('#modalSendMessage #resultMessage').html('<div class="alert alert-success">' + response + '</div>');
+                    $('#modalSendMessage #resultMessage').html('<div class="alert alert-success">Сообщение успешно отправлено</div>');
                     $('#sendMessage')[0].reset();
                 } else {
                     $('#modalSendMessage #resultMessage').html('<div class="alert alert-danger">Проверьте, что все поля были заполнены</div>');
