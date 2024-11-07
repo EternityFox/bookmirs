@@ -144,8 +144,7 @@
 
 <? if ($_SESSION['auth']['role'] != 8 && $_GET['login'] != 'shop'): ?>
 <?php if ($view == 'promotion'): ?>
-<div class="fixed-top"></div>
-<nav class="navbar navbar-expand-lg py-lg-4 pt-2 promotion-header" id="navbar-scroll">
+<nav class="navbar navbar-expand-lg promotion-header" id="navbar-scroll">
     <?php else: ?>
     <nav class="navbar navbar-expand-lg py-lg-4 pt-2 fixed-top" id="navbar-scroll">
         <?php endif; ?>
