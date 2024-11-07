@@ -151,71 +151,65 @@ function getVacancyDetail($vid)
 function editQuestion()
 {
     $error = '';
-    $name = isset($_POST['name']) && $_POST['name'] ? $_POST['name'] : "Администратор";
-    $email = isset($_POST['email']) && $_POST['email'] ? $_POST['email'] : "no-reply@bookmirs.ru";
-    $question = $_POST['question'];
-    $answer = $_POST['answer'];
-    $send_mail = $_POST['send_mail'];
-    $now = time();
-    $updated_at = date('Y-m-d H:i:s', $now);
-    $active = $_POST['active'];
-    $question_id = $_GET['question_id'];
+    $name = isset($_POST['name']) && $_POST['name'] ? htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8') : "Администратор";
+    $email = isset($_POST['email']) && $_POST['email'] ? filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) : "no-reply@bookmirs.ru";
+    $question = isset($_POST['question']) ? htmlspecialchars($_POST['question'], ENT_QUOTES, 'UTF-8') : '';
+    $answer = isset($_POST['answer']) ? htmlspecialchars($_POST['answer'], ENT_QUOTES, 'UTF-8') : '';
+    $send_mail = isset($_POST['send_mail']) ? $_POST['send_mail'] : '';
+    $active = isset($_POST['active']) ? (int)$_POST['active'] : 0;
+    $question_id = isset($_GET['question_id']) ? (int)$_GET['question_id'] : 0;
     if ($question_id) {
+        $now = time();
+        $updated_at = date('Y-m-d H:i:s', $now);
         $query = "UPDATE questions SET name='$name', email='$email', question='$question', answer='$answer', updated_at='$updated_at', active='$active' WHERE id='$question_id'";
         $res = mysql_query($query) or die(mysql_error());
-        if ($res == 1 && $send_mail === "true" && $email) {
-            $message = "Здравствуйте,". $name."! <br>"."Спасибо за ваш вопрос на нашем сайте. Мы рады, что вы обратились к нам и готовы помочь вам с вашим вопросом:" .$question.".<br>Наш ответ: ". $answer;
-            sendMail($name, $email, $message);
+        if ($res && $send_mail && $email) {
+            $message = "Здравствуйте, " . $name . "! <br><br><br>" . "Спасибо за ваш вопрос на нашем сайте. Мы рады, что вы обратились к нам и готовы помочь вам с вашим вопросом: " . $question . ".<br><br><br>Наш ответ: " . $answer;
+            sendMail($email, $message);
         }
     }
 }
 
-function sendMail($name, $email, $message)
+function sendMail( $email, $message)
 {
-    function mime_header_encode($str, $data_charset, $send_charset)
-    {
-        if ($data_charset != $send_charset)
-            $str = iconv($data_charset, $send_charset . '//IGNORE', $str);
-        return ('=?' . $send_charset . '?B?' . base64_encode($str) . '?=');
+    $host = 'smtp.bookmirs.ru';
+    $port = 587;
+    $username = 'tochka24';
+    $password = 'QWERTY';
+    $from = 'kds@bookmirs.ru';
+
+    $socket = fsockopen($host, $port, $errno, $errstr, 30);
+    if (!$socket) {
+        die("Не удалось подключиться: $errstr ($errno)");
     }
 
-    class TEmail
+    function sendCommand($socket, $command)
     {
-        public $from_email;
-        public $from_name;
-        public $to_email;
-        public $to_name;
-        public $subject;
-        public $data_charset = 'UTF-8';
-        public $send_charset = 'windows-1251';
-        public $body = '';
-        public $type = 'text/plain';
-
-        function send()
-        {
-            $dc = $this->data_charset;
-            $sc = $this->send_charset;
-            $enc_to = mime_header_encode($this->to_name, $dc, $sc) . ' <' . $this->to_email . '>';
-            $enc_subject = mime_header_encode($this->subject, $dc, $sc);
-            $enc_from = mime_header_encode($this->from_name, $dc, $sc) . ' <' . $this->from_email . '>';
-            $enc_body = $dc == $sc ? $this->body : iconv($dc, $sc . '//IGNORE', $this->body);
-            $headers = '';
-            $headers .= "Mime-Version: 1.0\r\n";
-            $headers .= "Content-type: " . $this->type . "; charset=" . $sc . "\r\n";
-            $headers .= "From: " . $enc_from . "\r\n";
-            return mail($enc_to, $enc_subject, $enc_body, $headers);
-        }
-
+        fputs($socket, $command . "\r\n");
+        return fgets($socket, 512);
     }
-    $emailgo= new TEmail;
-    $emailgo->from_email= 'kds@bookmirs.ru';
-    $emailgo->from_name= 'Администрация сайта bookmirs.ru';
-    $emailgo->to_email= $email;
-    $emailgo->to_name= $name;
-    $emailgo->subject= 'Ответ на ваш вопрос на сайте bookmirs.ru';
-    $emailgo->body= $message;
-    $emailgo->send();
+
+    echo sendCommand($socket, "HELO localhost");
+    echo sendCommand($socket, "AUTH LOGIN");
+    echo sendCommand($socket, base64_encode($username));
+    echo sendCommand($socket, base64_encode($password));
+    echo sendCommand($socket, "MAIL FROM: <$from>");
+    echo sendCommand($socket, "RCPT TO: <$email>");
+    echo sendCommand($socket, "DATA");
+
+    $headers = "From: $from\r\n";
+    $headers .= "To: $email\r\n";
+    $headers .= "Subject: Ответ на ваш вопрос на сайте bookmirs.ru\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-type: text/html; charset=UTF-8\r\n";
+
+    $fullMessage = $headers . "\r\n" . $message . "\r\n.";
+    echo sendCommand($socket, $fullMessage);
+    echo sendCommand($socket, "QUIT");
+
+    fclose($socket);
 }
+
 
 function getCoupons($limit = '', $orderBy = 'updated_at')
 {
