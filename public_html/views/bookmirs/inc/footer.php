@@ -48,7 +48,7 @@
             <p>&nbsp;</p>
 
             <ol>
-                <p><strong>2. Термины и определения</strong></з>
+                <p><strong>2. Термины и определения</strong></p>
             </ol>
 
             <p>&nbsp;</p>
@@ -834,16 +834,17 @@
                             <form role="form" method="post" id="sendMessage">
                                 <label for="name" class="form-label semibold-24">Имя</label>
                                 <input type="text" class="form-control form-control-lg mb-3 regular-14" id="name"
-                                       name="card">
+                                       name="name" required>
                                 <label for="phone" class="form-label semibold-24">Телефон</label>
                                 <input type="tel" class="form-control form-control-lg mb-3 regular-14"
-                                       id="phone" name="phone" placeholder="+7(123) 456-78-90" required>
-                                <label for="phone" class="form-label semibold-24">Email</label>
+                                       id="phone" name="phone" placeholder="+7(123) 456-78-90">
+                                <label for="email" class="form-label semibold-24">Email</label>
                                 <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                                        class="form-control form-control-lg mb-3 regular-14" id="email"
                                        name="email" placeholder="example@mail.ru" required>
-                                <label for="phone" class="form-label semibold-24">Сообщение</label>
-                                <textarea class="form-control regular-14" id="message" style="height: 150px"></textarea>
+                                <label for="message" class="form-label semibold-24">Сообщение</label>
+                                <textarea class="form-control regular-14" id="message" style="height: 150px" required></textarea>
+                                <input type="hidden" value="tochka24@bookmirs.ru" name="send_mail" id="send_mail">
                                 <button class="btn btn-blue-mirs text-white btn-lg my-3 mx-auto d-block"
                                         name="submit" id="btnSend"
                                         type="submit">Отправить
@@ -883,10 +884,10 @@
                                                                          data-bs-target="#modalSendMessage"
                                                                          class="text-black">tochka24@bookmirs.ru</a>
                                     </div>
-                                    <div class="nav-item footer-head-text mt-2">Технический отдел</div>
+                                    <div class="nav-item footer-head-text mt-2">Отдел книг</div>
                                     <div class="nav-item footer-text"><a href="" data-bs-toggle="modal"
                                                                          data-bs-target="#modalSendMessage"
-                                                                         class="text-black">tochka24sait@yandex.ru</a>
+                                                                         class="text-black">kds@bookmirs.ru</a>
                                     </div>
                                 </div>
                                 <div class="col ps-4-md ms-4-md">
@@ -900,12 +901,7 @@
                                                                              data-bs-target="#modalSendMessage"
                                                                              class="text-black">mirs@bookmirs.ru</a>
                                         </div>
-                                        <div class="nav-item footer-head-text">Отдел книг</div>
-                                        <div class="nav-item footer-text"><a href="" data-bs-toggle="modal"
-                                                                             data-bs-target="#modalSendMessage"
-                                                                             class="text-black">kds@bookmirs.ru</a>
-                                        </div>
-                                        <div class="nav-item footer-head-text">Отдел канцтоваров</div>
+                                        <div class="nav-item footer-head-text mt-md-4">Отдел канцтоваров</div>
                                         <div class="nav-item footer-text"><a href="" data-bs-toggle="modal"
                                                                              data-bs-target="#modalSendMessage"
                                                                              class="text-black">sale_kanc@bookmirs.ru</a>

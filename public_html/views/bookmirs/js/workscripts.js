@@ -30,6 +30,36 @@ $(document).ready(function () {
         });
     });
 
+    $('footer .footer-text a[data-bs-target="#modalSendMessage"]').on('click', function (e) {
+        $('#modalSendMessage #send_mail').val($(this).text());
+    });
+
+    $('#sendMessage').on('submit', function (e) {
+        e.preventDefault();
+        $.ajax({
+            url: '/functions/ajax_send_mails.php',
+            type: 'POST',
+            data: {
+                name: $('#sendMessage #name').val(),
+                phone: $('#sendMessage #phone').val(),
+                email: $('#sendMessage #email').val(),
+                message: $('#sendMessage #message').val(),
+                sender: $('#sendMessage #send_mail').val(),
+            },
+            success: function (response) {
+                if (response) {
+                    $('#modalViewPromotionQuestion #resultMessage').html('<div class="alert alert-success">' + response + '</div>');
+                    $('#sendQuestion')[0].reset();
+                } else {
+                    $('#modalViewPromotionQuestion #resultMessage').html('<div class="alert alert-danger">Проверьте, что все поля были заполнены</div>');
+                }
+            },
+            error: function () {
+                $('#modalViewPromotionQuestion #resultMessage').html('<div class="alert alert-danger">Произошла ошибка при отправке запроса.</div>');
+            }
+        });
+    });
+
     $('#sendCoupon').on('submit', function (e) {
         e.preventDefault();
         $.ajax({
