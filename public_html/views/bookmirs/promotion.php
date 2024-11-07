@@ -1,4 +1,8 @@
 <style>
+    .promotion-link:hover, .promotion-link:focus, .promotion-link:active, .promotion-link.active{
+        color: #ef7f1a!important;
+    }
+
     .container {
         margin-top: 50px;
         text-align: center;
@@ -58,7 +62,7 @@
     .promotion-logo {
         width: auto;
         height: 70px;
-        margin-top: 8px;
+        margin-top: 4px;
     }
 
     .promotion-link {
@@ -456,6 +460,8 @@
 
         .promotion-logo {
             z-index: 1;
+            height: 50px;
+            margin-top: 0;
         }
 
         .promotion-navbar {
@@ -488,7 +494,8 @@
         .promotion-button {
             width: 90%;
         }
-        .promotion-telegram img{
+
+        .promotion-telegram img {
             width: 70px;
         }
 
@@ -665,6 +672,7 @@
         .promotion-modal-text {
             font-size: 18px;
         }
+
     }
 
     @media (max-width: 481px) {

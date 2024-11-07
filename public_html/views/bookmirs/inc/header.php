@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="<?= TEMPLATE ?>css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="<?= TEMPLATE ?>css/owl.carousel.min.css"/>
     <link rel="stylesheet" type="text/css" href="<?= TEMPLATE ?>css/owl.theme.default.min.css"/>
-    <link rel="stylesheet" type="text/css" href="<?= TEMPLATE ?>css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="<?= TEMPLATE ?>css/style.css?1.2.5"/>
     <link rel="stylesheet" media="screen" href="<?= TEMPLATE ?>css/superfish.css">
     <link rel="stylesheet" media="screen" href="<?= TEMPLATE ?>css/superfish-vertical.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css"
@@ -144,8 +144,7 @@
 
 <? if ($_SESSION['auth']['role'] != 8 && $_GET['login'] != 'shop'): ?>
 <?php if ($view == 'promotion'): ?>
-<div class="fixed-top"></div>
-<nav class="navbar navbar-expand-lg py-lg-4 pt-2 promotion-header" id="navbar-scroll">
+<nav class="navbar navbar-expand-lg promotion-header" id="navbar-scroll">
     <?php else: ?>
     <nav class="navbar navbar-expand-lg py-lg-4 pt-2 fixed-top" id="navbar-scroll">
         <?php endif; ?>
