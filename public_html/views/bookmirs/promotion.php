@@ -764,13 +764,13 @@
                 <img src="views/bookmirs/images/moneys-bag.png" alt="Мешок с деньгами" class="money-bag">
             </div>
             <div class="promotion-header-info">
-                <div class="promotion-title">Акция «Мешок денег за чек от 1000 рублей»</div>
+                <div class="promotion-title">Акция «Мешочек денег»</div>
                 <div class="promotion-description">С 15.11.2024 по 15.12.2024 совершите покупку в наших магизнах от 1000
-                    рублей, регестрируйте купон и получайте призы
+                    рублей, регистрируйте купон и получайте призы
                 </div>
                 <div class="promotion-sender-block">
                     <button class="promotion-button btn btn-blue-mirs" data-bs-toggle="modal"
-                            data-bs-target="#modalViewPromotionRegistration">Зарегестрировать купон
+                            data-bs-target="#modalViewPromotionRegistration">Зарегистрировать купон
                     </button>
                     <div class="promotion-telegram">
                         <a href="https://t.me/mirs_dv">
@@ -970,7 +970,7 @@
                      class="ms-auto d-block">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="col-12 modal-title text-center w-100 bold-30 promotion-modal-title">Зарегестрировать
+            <div class="col-12 modal-title text-center w-100 bold-30 promotion-modal-title">Зарегистрировать
                 купон
             </div>
             <div class="modal-body">

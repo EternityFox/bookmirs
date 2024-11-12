@@ -13,7 +13,7 @@ if ($_POST) {
         echo json_encode($json);
         die();
     }
-    if (!$phone) {
+    if ($phone) {
         $message = $message . ' <br><br><br><-> Обратный e-mail: ' . $email . ' <-> Обратный номер телефона: ' . $phone . ' <-> Имя отправителя: ' . $name;
     } else {
         $message = $message . '<br><br><br> <-> Обратный e-mail: ' . $email . ' <-> Имя отправителя: ' . $name;

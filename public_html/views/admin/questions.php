@@ -24,7 +24,7 @@
                     <td><?=dateFormat($question['created_at'])?></td>
                     <td>
                         <a class="btn btn-xs btn-primary"
-                           href="/admin/?view=edit_question&question_id=<?= $question['vid'] ?>">редактировать</a>
+                           href="/admin/?view=edit_question&question_id=<?= $question['vid'] ?>">ответить на вопрос</a>
                         <form method="POST" action="">
                             <input type="hidden" name="id" value="<?= $question['vid'] ?>">
                             <input type="hidden" name="delete_question" value="1">
