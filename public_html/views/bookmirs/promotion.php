@@ -51,6 +51,21 @@
         height: 52px;
     }
 
+    .promotion-info-block{
+        padding-bottom: 40px;
+    }
+    .promotion-info-block .promotion-info-link{
+        font-size: 24px;
+        color: #ffffff;
+        text-decoration: none;
+    }
+    .promotion-info-block .promotion-info-text{
+        font-size: 14px;
+        color: #ffffff;
+        padding: 20px 0;
+        text-align: center;
+    }
+
     .promotion-navbar {
         background: #fff;
         border-radius: .625rem;
@@ -200,6 +215,7 @@
         text-transform: uppercase;
         font-size: 60px;
         font-weight: 600;
+        text-align: center;
     }
 
 
@@ -765,7 +781,7 @@
             </div>
             <div class="promotion-header-info">
                 <div class="promotion-title">Акция «Мешочек денег»</div>
-                <div class="promotion-description">С 15.11.2024 по 15.12.2024 совершите покупку в наших магизнах от 1000
+                <div class="promotion-description">С 15.11.2024 по 15.12.2024 совершите покупку в наших магазинах от 1000
                     рублей, регистрируйте купон и получайте призы
                 </div>
                 <div class="promotion-sender-block">
@@ -920,6 +936,16 @@
             </div>
         </div>
     </div>
+    <div class="container promotion-info-block">
+        <div class="d-flex justify-content-evenly pb-4">
+            <a href="../files/rules.pdf" class="promotion-info-link" target="_blank">Правила акции</a>
+            <a href="../files/confidential.pdf" class="promotion-info-link" target="_blank">Политика конфиденциальности</a>
+            <a href="#" data-bs-toggle="modal" data-bs-email="kds@bookmirs.ru" data-bs-target="#modalSendMessage" class="promotion-info-link">Обратная связь</a>
+        </div>
+        <div class="promotion-info-text">
+            Срок участия в Акции с 15.11.2024г. по 15.12.2024г. Общий срок Акции, включая срок вручения призов с 15.11.2024г. по 31.12.2024г. Информация об организаторе Акции, правилах ее проведения, участвующей в Акции продукции, сроках, количестве призов, месте и порядке их получения размещены на сайте bookmirs.ru в разделе "Акция"
+        </div>
+    </div>
 </div>
 
 <div class="modal fade" id="modalViewPromotionQuestion" tabindex="-1" aria-hidden="true">
@@ -1000,7 +1026,7 @@
                                         <input id="check-os-1" type="checkbox" class="hidden" checked>
                                         <label for="check-os-1" class="label-dot"></label>
                                         <label for="check-os-1" class="label-text">
-                                            Я даю согласие на обработку<br> <a href="./personal-data.pdf"
+                                            Я даю согласие на обработку<br> <a href="../files/confidential.pdf"
                                                                                target="_blank">персональных
                                                 данных</a></label></div>
                                 </div>
@@ -1016,6 +1042,7 @@
         </div>
     </div>
 </div>
+
 
 <script>
     // Функция для создания монет

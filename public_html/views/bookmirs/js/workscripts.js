@@ -30,8 +30,8 @@ $(document).ready(function () {
         });
     });
 
-    $('footer .footer-text a[data-bs-target="#modalSendMessage"]').on('click', function (e) {
-        $('#modalSendMessage #send_mail').val($(this).text());
+    $('a[data-bs-target="#modalSendMessage"]').on('click', function (e) {
+        $('#modalSendMessage #send_mail').val($(this).attr('data-bs-email'));
     });
 
     $('#sendMessage').on('submit', function (e) {
