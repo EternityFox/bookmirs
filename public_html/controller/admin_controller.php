@@ -41,6 +41,10 @@ if ($_POST['add_news']) {
 } elseif ($_POST['edit_vacancy']) {
     editVacancy();
     header("Location: /admin/?view=vacancies");
+} elseif ($_POST['add_promo_modal']) {
+    addPromoModal();
+    header("Location: /admin/?view=promo_modals");
+    exit;
 } elseif ($_POST['add_question']) {
     addQuestion();
     header("Location: /admin/?view=questions");
@@ -49,9 +53,15 @@ if ($_POST['add_news']) {
     addCoupon();
     header("Location: /admin/?view=coupons");
     exit;
+} elseif ($_POST['delete_promo_modal']) {
+    deletePromoModal();
+    redirect();
 } elseif ($_POST['delete_question']) {
     deleteQuestion();
     redirect();
+} elseif ($_POST['edit_promo_modal']) {
+    editPromoModal();
+    header("Location: /admin/?view=promo_modals");
 } elseif ($_POST['edit_question']) {
     editQuestion();
     header("Location: /admin/?view=questions");
@@ -112,6 +122,35 @@ switch ($view) {
     case('edit_question'):
         $question_id = $_GET['question_id'];
         $question = getQuestionDetail($question_id);
+        break;
+    case('promo_modals'):
+        $promotion_modals = getPromoModals();
+        break;
+    case('add_promo_modal'):
+        $type_annimations = ['no_animation' => 'Нет анимации',
+            'mfp-zoom-in' => 'Увеличить',
+            'mfp-newspaper' => 'Крутить',
+            'mfp-move-horizontal' => 'Появление сбоку',
+            'mfp-move-from-top' => 'Появление сверху',
+            'mfp-3d-unfold' => '3д развернуть',
+            'mfp-zoom-out' => 'Отдалить',
+            'hinge' => 'Падение',
+        ];
+        $mytime = time();
+        break;
+    case('edit_promo_modal'):
+        $promo_modal_id = $_GET['promo_modal_id'];
+        $promo_modal = getPromoModalDetail($promo_modal_id);
+        $type_annimations = ['no_animation' => 'Нет анимации',
+            'mfp-zoom-in' => 'Увеличить',
+            'mfp-newspaper' => 'Крутить',
+            'mfp-move-horizontal' => 'Появление сбоку',
+            'mfp-move-from-top' => 'Появление сверху',
+            'mfp-3d-unfold' => '3д развернуть',
+            'mfp-zoom-out' => 'Отдалить',
+            'hinge' => 'Падение',
+        ];
+        $mytime = time();
         break;
     case('vacancies'):
         $vacancies = getVacancies();

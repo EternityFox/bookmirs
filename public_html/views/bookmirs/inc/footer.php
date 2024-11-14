@@ -882,12 +882,12 @@
                                                     class="footer-bold-text">+7 (924) 406-00-25 (WhatsApp)</span></a>
                                     </div>
                                     <div class="nav-item footer-text"><a href="" data-bs-toggle="modal"
-                                                                         data-bs-target="#modalSendMessage"
+                                                                         data-bs-target="#modalSendMessage" data-bs-email="tochka24@bookmirs.ru"
                                                                          class="text-black">tochka24@bookmirs.ru</a>
                                     </div>
                                     <div class="nav-item footer-head-text mt-2">Отдел книг</div>
                                     <div class="nav-item footer-text"><a href="" data-bs-toggle="modal"
-                                                                         data-bs-target="#modalSendMessage"
+                                                                         data-bs-target="#modalSendMessage" data-bs-email="kds@bookmirs.ru"
                                                                          class="text-black">kds@bookmirs.ru</a>
                                     </div>
                                 </div>
@@ -899,12 +899,12 @@
                                         <a class="nav-link regular-14 link-primary d-md-none d- p-0 mt-2">Показать на
                                             карте</a>
                                         <div class="nav-item footer-text"><a href="" data-bs-toggle="modal"
-                                                                             data-bs-target="#modalSendMessage"
+                                                                             data-bs-target="#modalSendMessage" data-bs-email="mirs@bookmirs.ru"
                                                                              class="text-black">mirs@bookmirs.ru</a>
                                         </div>
                                         <div class="nav-item footer-head-text mt-md-4">Отдел канцтоваров</div>
                                         <div class="nav-item footer-text"><a href="" data-bs-toggle="modal"
-                                                                             data-bs-target="#modalSendMessage"
+                                                                             data-bs-target="#modalSendMessage" data-bs-email="sale_kanc@bookmirs.ru"
                                                                              class="text-black">sale_kanc@bookmirs.ru</a>
 
                                         </div>

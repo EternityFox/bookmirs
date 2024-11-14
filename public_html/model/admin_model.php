@@ -147,70 +147,6 @@ function getVacancyDetail($vid)
     return $vacancyDetail;
 }
 
-
-function editQuestion()
-{
-    $error = '';
-    $name = isset($_POST['name']) && $_POST['name'] ? htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8') : "Администратор";
-    $email = isset($_POST['email']) && $_POST['email'] ? filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) : "no-reply@bookmirs.ru";
-    $question = isset($_POST['question']) ? htmlspecialchars($_POST['question'], ENT_QUOTES, 'UTF-8') : '';
-    $answer = isset($_POST['answer']) ? htmlspecialchars($_POST['answer'], ENT_QUOTES, 'UTF-8') : '';
-    $send_mail = isset($_POST['send_mail']) ? $_POST['send_mail'] : '';
-    $active = isset($_POST['active']) ? (int)$_POST['active'] : 0;
-    $question_id = isset($_GET['question_id']) ? (int)$_GET['question_id'] : 0;
-    if ($question_id) {
-        $now = time();
-        $updated_at = date('Y-m-d H:i:s', $now);
-        $query = "UPDATE questions SET name='$name', email='$email', question='$question', answer='$answer', updated_at='$updated_at', active='$active' WHERE id='$question_id'";
-        $res = mysql_query($query) or die(mysql_error());
-        if ($res && $send_mail && $email) {
-            $message = "Здравствуйте, " . $name . "! <br><br><br>" . "Спасибо за ваш вопрос на нашем сайте. Мы рады, что вы обратились к нам и готовы помочь вам с вашим вопросом: " . $question . ".<br><br><br>Наш ответ: " . $answer;
-            sendMail($email, $message);
-        }
-    }
-}
-
-function sendMail( $email, $message)
-{
-    $host = 'smtp.bookmirs.ru';
-    $port = 587;
-    $username = 'tochka24';
-    $password = 'QWERTY';
-    $from = 'kds@bookmirs.ru';
-
-    $socket = fsockopen($host, $port, $errno, $errstr, 30);
-    if (!$socket) {
-        die("Не удалось подключиться: $errstr ($errno)");
-    }
-
-    function sendCommand($socket, $command)
-    {
-        fputs($socket, $command . "\r\n");
-        return fgets($socket, 512);
-    }
-
-    echo sendCommand($socket, "HELO localhost");
-    echo sendCommand($socket, "AUTH LOGIN");
-    echo sendCommand($socket, base64_encode($username));
-    echo sendCommand($socket, base64_encode($password));
-    echo sendCommand($socket, "MAIL FROM: <$from>");
-    echo sendCommand($socket, "RCPT TO: <$email>");
-    echo sendCommand($socket, "DATA");
-
-    $headers = "From: $from\r\n";
-    $headers .= "To: $email\r\n";
-    $headers .= "Subject: Ответ на ваш вопрос на сайте bookmirs.ru\r\n";
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-type: text/html; charset=UTF-8\r\n";
-
-    $fullMessage = $headers . "\r\n" . $message . "\r\n.";
-    echo sendCommand($socket, $fullMessage);
-    echo sendCommand($socket, "QUIT");
-
-    fclose($socket);
-}
-
-
 function getCoupons($limit = '', $orderBy = 'updated_at')
 {
     if ($limit) {
@@ -264,6 +200,154 @@ function addQuestion()
     $query = "INSERT INTO questions (name, email, question, answer, created_at, updated_at, active)
 			VALUES ('$name', '$email', '$question', '$answer', '$createt_add', '$updated_at', '$active')";
     $res = mysql_query($query) or die(mysql_error());
+}
+
+function editQuestion()
+{
+    $error = '';
+    $name = isset($_POST['name']) && $_POST['name'] ? htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8') : "Администратор";
+    $email = isset($_POST['email']) && $_POST['email'] ? filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) : "no-reply@bookmirs.ru";
+    $question = isset($_POST['question']) ? htmlspecialchars($_POST['question'], ENT_QUOTES, 'UTF-8') : '';
+    $answer = isset($_POST['answer']) ? htmlspecialchars($_POST['answer'], ENT_QUOTES, 'UTF-8') : '';
+    $send_mail = isset($_POST['send_mail']) ? $_POST['send_mail'] : '';
+    $active = isset($_POST['active']) ? (int)$_POST['active'] : 0;
+    $question_id = isset($_GET['question_id']) ? (int)$_GET['question_id'] : 0;
+    if ($question_id) {
+        $now = time();
+        $updated_at = date('Y-m-d H:i:s', $now);
+        $query = "UPDATE questions SET name='$name', email='$email', question='$question', answer='$answer', updated_at='$updated_at', active='$active' WHERE id='$question_id'";
+        $res = mysql_query($query) or die(mysql_error());
+        if ($res && $send_mail && $email) {
+            $message = "Здравствуйте, " . $name . "! <br><br><br>" . "Спасибо за ваш вопрос на нашем сайте. Мы рады, что вы обратились к нам и готовы помочь вам с вашим вопросом: " . $question . ".<br><br><br>Наш ответ: " . $answer;
+            sendMail($email, $message);
+        }
+    }
+}
+
+function sendMail($email, $message)
+{
+    $host = 'smtp.bookmirs.ru';
+    $port = 587;
+    $username = 'tochka24';
+    $password = 'QWERTY';
+    $from = 'kds@bookmirs.ru';
+
+    $socket = fsockopen($host, $port, $errno, $errstr, 30);
+    if (!$socket) {
+        die("Не удалось подключиться: $errstr ($errno)");
+    }
+
+    function sendCommand($socket, $command)
+    {
+        fputs($socket, $command . "\r\n");
+        return fgets($socket, 512);
+    }
+
+    echo sendCommand($socket, "HELO localhost");
+    echo sendCommand($socket, "AUTH LOGIN");
+    echo sendCommand($socket, base64_encode($username));
+    echo sendCommand($socket, base64_encode($password));
+    echo sendCommand($socket, "MAIL FROM: <$from>");
+    echo sendCommand($socket, "RCPT TO: <$email>");
+    echo sendCommand($socket, "DATA");
+
+    $headers = "From: $from\r\n";
+    $headers .= "To: $email\r\n";
+    $headers .= "Subject: Ответ на ваш вопрос на сайте bookmirs.ru\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-type: text/html; charset=UTF-8\r\n";
+
+    $fullMessage = $headers . "\r\n" . $message . "\r\n.";
+    echo sendCommand($socket, $fullMessage);
+    echo sendCommand($socket, "QUIT");
+
+    fclose($socket);
+}
+
+function getPromoModals($limit = '', $orderBy = 'created_at')
+{
+    if ($limit) {
+        $limit = " LIMIT " . $limit;
+    }
+    $query = 'SELECT id as vid, name, title, description, filename, content, url_href, url_redirect, pop_up_type, data_start, data_end, action FROM promotions ORDER by ' . $orderBy . ' DESC' . $limit;
+    $res = mysql_query($query) or die(mysql_query());
+    $promotion_modals = array();
+    while ($row = mysql_fetch_assoc($res)) {
+        $promotion_modals[] = $row;
+    }
+    return $promotion_modals;
+}
+
+function editPromoModal()
+{
+    $error = '';
+    $name = $_POST['name'];
+    $data_start = $_POST['data_start'];
+    $data_end = $_POST['data_end'];
+    $pop_up_type = $_POST['animations'];
+    $action = isset($_POST['action']) && $_POST['action'] ? $_POST['action'] : 0;
+    $file_name = isset($_POST['uploaded-image']) && $_POST['uploaded-image'] ? $_POST['uploaded-image'] : NULL;
+    $title = isset($_POST['title']) && $_POST['title'] ? $_POST['title'] : NULL;
+    $url_href = isset($_POST['url_href']) && $_POST['url_href'] ? $_POST['url_href'] : NULL;
+    $url_redirect = isset($_POST['url_redirect']) && $_POST['url_redirect'] ? $_POST['url_redirect'] : NULL;
+    $description = isset($_POST['description']) && $_POST['description'] ? $_POST['description'] : NULL;
+    $content = isset($_POST['content']) && $_POST['content'] ? $_POST['content'] : NULL;
+    $promo_modal_id = isset($_GET['promo_modal_id']) ? (int)$_GET['promo_modal_id'] : 0;
+    if ($promo_modal_id) {
+        $now = time();
+        $query = "SELECT * FROM promotions WHERE id='" . $promo_modal_id . "' LIMIT 1";
+        $res = mysql_query($query);
+        $promo_modal = mysql_fetch_assoc($res);
+        if (isset($promo_modal) && $promo_modal && isset($promo_modal['filename']) && $promo_modal['filename'] && $promo_modal['filename'] != $file_name) {
+            $path = __DIR__ . "..\..\media\images/";
+            foreach ([100, 260, 300] as $index) {
+                if (file_exists($path . $index . '_' . $promo_modal['filename']))
+                    unlink($path . $index . '_' . $promo_modal['filename']);
+            }
+            if (file_exists($path . $promo_modal['filename']))
+                unlink($path . $promo_modal['filename']);
+        }
+        $updated_at = date('Y-m-d H:i:s', $now);
+        $query = "UPDATE promotions SET name='$name', title='$title', description='$description',filename='$file_name',content='$content',url_href='$url_href',url_redirect='$url_redirect',pop_up_type='$pop_up_type',data_start='$data_start',data_end='$data_end',action='$action',updated_at='$updated_at' WHERE id='$promo_modal_id'";
+        $res = mysql_query($query) or die(mysql_error());
+    }
+}
+
+function addPromoModal()
+{
+    $error = '';
+    $name = $_POST['name'];
+    $data_start = $_POST['data_start'];
+    $data_end = $_POST['data_end'];
+    $pop_up_type = $_POST['animations'];
+    $action = isset($_POST['action']) && $_POST['action'] ? $_POST['action'] : 0;
+    $file_name = isset($_POST['uploaded-image']) && $_POST['uploaded-image'] ? $_POST['uploaded-image'] : NULL;
+    $title = isset($_POST['title']) && $_POST['title'] ? $_POST['title'] : NULL;
+    $url_href = isset($_POST['url_href']) && $_POST['url_href'] ? $_POST['url_href'] : NULL;
+    $url_redirect = isset($_POST['url_redirect']) && $_POST['url_redirect'] ? $_POST['url_redirect'] : NULL;
+    $description = isset($_POST['description']) && $_POST['description'] ? $_POST['description'] : NULL;
+    $content = isset($_POST['content']) && $_POST['content'] ? $_POST['content'] : NULL;
+    $now = time();
+    $createt_add = date('Y-m-d H:i:s', $now);
+    $updated_at = date('Y-m-d H:i:s', $now);
+    $query = "INSERT INTO promotions (name, title, description, filename, content, url_href, url_redirect, pop_up_type, data_start, data_end, action, created_at, updated_at)
+			VALUES ('$name', '$title', '$description', '$file_name', '$content', '$url_href', '$url_redirect', '$pop_up_type', '$data_start', '$data_end', '$action', '$createt_add', '$updated_at')";
+    $res = mysql_query($query) or die(mysql_error());
+}
+
+function deletePromoModal()
+{
+    $promo_modal_id = abs((int)$_POST['id']);
+    $query = "DELETE FROM promotions WHERE id='" . $promo_modal_id . "'";
+    $res = mysql_query($query) or die(mysql_error());
+}
+
+function getPromoModalDetail($vid)
+{
+    $query = "SELECT * FROM promotions WHERE id='" . $vid . "' LIMIT 1";
+    $res = mysql_query($query);
+    $promo_modal = mysql_fetch_assoc($res);
+    return $promo_modal;
 }
 
 function deleteQuestion()

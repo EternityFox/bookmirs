@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="<?= TEMPLATE ?>css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="<?= TEMPLATE ?>css/owl.carousel.min.css"/>
     <link rel="stylesheet" type="text/css" href="<?= TEMPLATE ?>css/owl.theme.default.min.css"/>
-    <link rel="stylesheet" type="text/css" href="<?= TEMPLATE ?>css/style.css?1.2.5"/>
+    <link rel="stylesheet" type="text/css" href="<?= TEMPLATE ?>css/style.css?v=1.2.6"/>
     <link rel="stylesheet" media="screen" href="<?= TEMPLATE ?>css/superfish.css">
     <link rel="stylesheet" media="screen" href="<?= TEMPLATE ?>css/superfish-vertical.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css"
@@ -39,12 +39,16 @@
     <script type="text/javascript" src="<?= TEMPLATE ?>js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<?= TEMPLATE ?>js/owl.carousel.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"
-            integrity="sha512-IsNh5E3eYy3tr/JiX2Yx4vsCujtkhwl7SLqgnwLNgf04Hrt9BT9SXlLlZlWx+OK4ndzAoALhsMNcCmkggjZB1w=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                integrity="sha512-IsNh5E3eYy3tr/JiX2Yx4vsCujtkhwl7SLqgnwLNgf04Hrt9BT9SXlLlZlWx+OK4ndzAoALhsMNcCmkggjZB1w=="
+                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" src="<?= TEMPLATE ?>js/workscripts.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+                  href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css"
+                  integrity="sha512-WEQNv9d3+sqyHjrqUZobDhFARZDko2wpWdfcpv44lsypsSuMO0kHGd3MQ8rrsBn/Qa39VojphdU6CMkpJUmDVw=="
+                  crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <?php if ($view == 'news'): ?>
         <script type="text/javascript" src="<?= TEMPLATE ?>js/jquery.grid-a-licious.min.js"></script>
     <?php endif; ?>
