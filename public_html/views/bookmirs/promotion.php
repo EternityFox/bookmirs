@@ -297,8 +297,9 @@
     .promotion-participation-container {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
         width: 45%;
+        gap: 16px;
     }
 
     .promotion-participation-block {
@@ -456,6 +457,12 @@
     }
 
     @media (max-width: 769px) {
+        .promotion-info-block .promotion-info-text{
+            font-size: 12px;
+            padding: 20px 12px;
+            text-align: justify;
+        }
+
         .container-fon {
             height: 50vh;
         }
@@ -830,13 +837,13 @@
                         <div class="carousel-item active">
                             <img src="views/bookmirs/images/promotion-slider-1.png" class="d-block w-100" alt="Слайд 1">
                             <div class="carousel-caption promotion-carousel-text">
-                                <p>Покупайте товары в нашем магазине от 1000 ₽</p>
+                                <p>Совершите покупку на сумму от 1000 рублей</p>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img src="views/bookmirs/images/promotion-slider-2.png" class="d-block w-100" alt="Слайд 2">
                             <div class="carousel-caption promotion-carousel-text">
-                                <p>Получайте купон и чек на кассе</p>
+                                <p>Получите чек и купон участника</p>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -848,16 +855,10 @@
                         <div class="carousel-item">
                             <img src="views/bookmirs/images/promotion-slider-4.png" class="d-block w-100" alt="Слайд 4">
                             <div class="carousel-caption promotion-carousel-text">
-                                <p>Победитель будет выбран 16.12.2024 в нашем телеграмм канале <a
+                                <p>Дождитесь итогов розыгрыша и получите свой приз <a
                                             href="https://t.me/mirs_dv">
                                         <img src="views/bookmirs/images/icon-telegram.png" alt="Иконка телеграмма">
                                     </a></p>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="views/bookmirs/images/promotion-slider-5.png" class="d-block w-100" alt="Слайд 5">
-                            <div class="carousel-caption promotion-carousel-text">
-                                <p>В случае победы, с вами связывается менеджер по телефону и email</p>
                             </div>
                         </div>
                     </div>
@@ -868,16 +869,14 @@
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
-
-                <!-- Пронумерованные блоки -->
                 <div class="promotion-participation-container">
                     <div class="promotion-participation-block active" data-slide-to="0">
                         <span class="promotion-participation-number">1</span>
-                        Покупайте товары в нашем магазине от 1000 ₽
+                        Совершите покупку на сумму от 1000 рублей
                     </div>
                     <div class="promotion-participation-block" data-slide-to="1">
                         <span class="promotion-participation-number">2</span>
-                        Получайте купон и чек на кассе
+                        Получите чек и купон участника
                     </div>
                     <div class="promotion-participation-block" data-slide-to="2">
                         <span class="promotion-participation-number">3</span>
@@ -885,11 +884,7 @@
                     </div>
                     <div class="promotion-participation-block" data-slide-to="3">
                         <span class="promotion-participation-number">4</span>
-                        Победитель будет выбран 16.12.2024 в нашем телеграмм канале
-                    </div>
-                    <div class="promotion-participation-block" data-slide-to="4">
-                        <span class="promotion-participation-number">5</span>
-                        В случае победы, с вами связывается менеджер по телефону и email
+                        Дождитесь итогов розыгрыша и получите свой приз
                     </div>
                 </div>
             </div>
@@ -937,7 +932,7 @@
         </div>
     </div>
     <div class="container promotion-info-block">
-        <div class="d-flex justify-content-evenly pb-4">
+        <div class="d-flex justify-content-evenly pb-4 flex-wrap gap-4">
             <a href="../files/rules.pdf" class="promotion-info-link" target="_blank">Правила акции</a>
             <a href="../files/confidential.pdf" class="promotion-info-link" target="_blank">Политика конфиденциальности</a>
             <a href="#" data-bs-toggle="modal" data-bs-email="kds@bookmirs.ru" data-bs-target="#modalSendMessage" class="promotion-info-link">Обратная связь</a>

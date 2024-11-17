@@ -599,7 +599,9 @@ footer .btn-blue-mirs {
 .hinge {animation-duration: 1s;	animation-name: hinge; }
 
 @media (max-width: 769px) {
-    .white-popup{ max-width: 100%; }
+    .white-popup{
+        max-width: 100%;
+    }
     .text_description {
         padding-left:0!important;
         padding-right:0!important;
