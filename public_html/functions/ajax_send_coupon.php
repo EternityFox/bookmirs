@@ -48,15 +48,15 @@ if ($agree === "true") {
             $sql_update = "UPDATE coupons SET name = '$name', email = '$email', phone = '$phone', updated_at = '$updated_at' WHERE code = '" . $code . "'";
             $res = mysql_query($sql_update);
             if ($res == 1) {
+                echo '{"success": true,"message":"Купон успешно зарегистрирован"}';
                 if ($email) {
-                    $message = "Здравствуйте, " . $name . "! <br><br><br>" . "Мы рады сообщить, что ваш купон под № ".$code." успешно зарегистрирован в системе." . "<br><br><br>" .
+                    $message = "Здравствуйте, " . $name . "! <br><br><br>" . "Мы рады сообщить, что ваш купон под № " . $code . " успешно зарегистрирован в системе." . "<br><br><br>" .
                         "Теперь вы участвуете в розыгрыше призов, который пройдет 16.12.2024. Мы обязательно свяжемся с вами, если вы станете одним из победителей!"
                         . "<br><br><br>" . "Если у вас возникнут вопросы, вы всегда можете обратиться к нам по mirs@bookmirs.ru или по телефону: +7 (4212) 47-00-47"
                         . "<br><br><br>" . "Спасибо, что участвуете! Удачи в розыгрыше!"
                         . "<br><br><br>" . "С уважением, ООО «МИРС»";
                     sendMail($email, $message);
                 }
-                echo '{"success": true,"message":"Купон успешно зарегистрирован"}';
             } else {
                 echo 'Произошла ошибка, попробуйте чуть позже или свяжитесь с нами';
             }
@@ -82,36 +82,37 @@ function sendMail($email, $message)
     $password = 'QWERTY';
     $from = 'kds@bookmirs.ru';
 
-    $socket = fsockopen($host, $port, $errno, $errstr, 30);
-    if (!$socket) {
-        die("Не удалось подключиться: $errstr ($errno)");
+    try {
+        $socket = fsockopen($host, $port, $errno, $errstr, 30);
+        function sendCommand($socket, $command)
+        {
+            fputs($socket, $command . "\r\n");
+            return fgets($socket, 512);
+        }
+
+        sendCommand($socket, "HELO localhost");
+        sendCommand($socket, "AUTH LOGIN");
+        sendCommand($socket, base64_encode($username));
+        sendCommand($socket, base64_encode($password));
+        sendCommand($socket, "MAIL FROM: <$from>");
+        sendCommand($socket, "RCPT TO: <$email>");
+        sendCommand($socket, "DATA");
+
+        $headers = "From: $from\r\n";
+        $headers .= "To: $email\r\n";
+        $headers .= "Subject: Ваш купон успешно зарегистрирован! 🎉\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-type: text/html; charset=UTF-8\r\n";
+
+        $fullMessage = $headers . "\r\n" . $message . "\r\n.";
+        sendCommand($socket, $fullMessage);
+        sendCommand($socket, "QUIT");
+
+        fclose($socket);
+    } catch (Exception $e) {
+        return true;
     }
-
-    function sendCommand($socket, $command)
-    {
-        fputs($socket, $command . "\r\n");
-        return fgets($socket, 512);
-    }
-
-    echo sendCommand($socket, "HELO localhost");
-    echo sendCommand($socket, "AUTH LOGIN");
-    echo sendCommand($socket, base64_encode($username));
-    echo sendCommand($socket, base64_encode($password));
-    echo sendCommand($socket, "MAIL FROM: <$from>");
-    echo sendCommand($socket, "RCPT TO: <$email>");
-    echo sendCommand($socket, "DATA");
-
-    $headers = "From: $from\r\n";
-    $headers .= "To: $email\r\n";
-    $headers .= "Subject: Ваш купон успешно зарегистрирован! 🎉\r\n";
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-type: text/html; charset=UTF-8\r\n";
-
-    $fullMessage = $headers . "\r\n" . $message . "\r\n.";
-    echo sendCommand($socket, $fullMessage);
-    echo sendCommand($socket, "QUIT");
-
-    fclose($socket);
+    return true;
 }
 
 die();
