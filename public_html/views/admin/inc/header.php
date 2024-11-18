@@ -5,7 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 	<link rel="stylesheet" type="text/css" href="<?=ADMINTEMPLATE?>css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="<?=ADMINTEMPLATE?>css/style.css?v=1.2" />
+	<link rel="stylesheet" type="text/css" href="<?=ADMINTEMPLATE?>css/style.css?v=1.3" />
        <!--[if lt IE 9]>
         <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
         <![endif]-->
