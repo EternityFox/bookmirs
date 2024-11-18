@@ -147,18 +147,27 @@ function getVacancyDetail($vid)
     return $vacancyDetail;
 }
 
-function getCoupons($limit = '', $orderBy = 'updated_at')
+function getCoupons($limit = 10, $offset = 0, $orderBy = 'updated_at')
 {
-    if ($limit) {
-        $limit = " LIMIT " . $limit;
-    }
-    $query = 'SELECT id as vid, code, name, email, phone, updated_at FROM coupons WHERE phone IS NOT NULL  ORDER by ' . $orderBy . ' DESC' . $limit;
-    $res = mysql_query($query) or die(mysql_query());
+    $query = 'SELECT id as vid, code, name, email, phone, updated_at 
+              FROM coupons 
+              WHERE phone IS NOT NULL  
+              ORDER BY ' . $orderBy . ' DESC 
+              LIMIT ' . intval($limit) . ' OFFSET ' . intval($offset);
+    $res = mysql_query($query) or die(mysql_error());
     $coupons = array();
     while ($row = mysql_fetch_assoc($res)) {
         $coupons[] = $row;
     }
     return $coupons;
+}
+
+function getCouponsCount()
+{
+    $query = 'SELECT COUNT(*) as count FROM coupons WHERE phone IS NOT NULL';
+    $res = mysql_query($query) or die(mysql_error());
+    $row = mysql_fetch_assoc($res);
+    return $row['count'];
 }
 
 function addCoupon()

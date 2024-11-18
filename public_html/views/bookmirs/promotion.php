@@ -1,6 +1,6 @@
 <style>
-    .promotion-link:hover, .promotion-link:focus, .promotion-link:active, .promotion-link.active{
-        color: #ef7f1a!important;
+    .promotion-link:hover, .promotion-link:focus, .promotion-link:active, .promotion-link.active {
+        color: #ef7f1a !important;
     }
 
     .container {
@@ -51,15 +51,17 @@
         height: 52px;
     }
 
-    .promotion-info-block{
+    .promotion-info-block {
         padding-bottom: 40px;
     }
-    .promotion-info-block .promotion-info-link{
+
+    .promotion-info-block .promotion-info-link {
         font-size: 24px;
         color: #ffffff;
         text-decoration: none;
     }
-    .promotion-info-block .promotion-info-text{
+
+    .promotion-info-block .promotion-info-text {
         font-size: 14px;
         color: #ffffff;
         padding: 20px 0;
@@ -781,7 +783,8 @@
             </div>
             <div class="promotion-header-info">
                 <div class="promotion-title">Акция «Мешочек денег»</div>
-                <div class="promotion-description">С 15.11.2024 по 15.12.2024 совершите покупку в наших магазинах от 1000
+                <div class="promotion-description">С 15.11.2024 по 15.12.2024 совершите покупку в наших магазинах от
+                    1000
                     рублей, регистрируйте купон и получайте призы
                 </div>
                 <div class="promotion-sender-block">
@@ -939,12 +942,21 @@
     <div class="container promotion-info-block">
         <div class="d-flex justify-content-evenly pb-4">
             <a href="../files/rules.pdf" class="promotion-info-link" target="_blank">Правила акции</a>
-            <a href="../files/confidential.pdf" class="promotion-info-link" target="_blank">Политика конфиденциальности</a>
-            <a href="#" data-bs-toggle="modal" data-bs-email="kds@bookmirs.ru" data-bs-target="#modalSendMessage" class="promotion-info-link">Обратная связь</a>
+            <a href="../files/confidential.pdf" class="promotion-info-link" target="_blank">Политика
+                конфиденциальности</a>
+            <a href="#" data-bs-toggle="modal" data-bs-email="kds@bookmirs.ru" data-bs-target="#modalSendMessage"
+               class="promotion-info-link">Обратная связь</a>
         </div>
         <div class="promotion-info-text">
-            Срок участия в Акции с 15.11.2024г. по 15.12.2024г. Общий срок Акции, включая срок вручения призов с 15.11.2024г. по 31.12.2024г. Информация об организаторе Акции, правилах ее проведения, участвующей в Акции продукции, сроках, количестве призов, месте и порядке их получения размещены на сайте bookmirs.ru в разделе "Акция"
+            Срок участия в Акции с 15.11.2024г. по 15.12.2024г. Общий срок Акции, включая срок вручения призов с
+            15.11.2024г. по 31.12.2024г. Информация об организаторе Акции, правилах ее проведения, участвующей в Акции
+            продукции, сроках, количестве призов, месте и порядке их получения размещены на сайте bookmirs.ru в разделе
+            "Акция"
         </div>
+    </div>
+</div>
+<div class="notification-system">
+    <div class="notification_list_bottom">
     </div>
 </div>
 

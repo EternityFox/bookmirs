@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="<?= TEMPLATE ?>css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="<?= TEMPLATE ?>css/owl.carousel.min.css"/>
     <link rel="stylesheet" type="text/css" href="<?= TEMPLATE ?>css/owl.theme.default.min.css"/>
-    <link rel="stylesheet" type="text/css" href="<?= TEMPLATE ?>css/style.css?v=1.2.6"/>
+    <link rel="stylesheet" type="text/css" href="<?= TEMPLATE ?>css/style.css?v=1.2.7"/>
     <link rel="stylesheet" media="screen" href="<?= TEMPLATE ?>css/superfish.css">
     <link rel="stylesheet" media="screen" href="<?= TEMPLATE ?>css/superfish-vertical.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css"
