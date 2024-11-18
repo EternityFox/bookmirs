@@ -597,11 +597,19 @@ footer .btn-blue-mirs {
     100% { transform: translateY(700px); opacity: 0; }
 }
 .hinge {animation-duration: 1s;	animation-name: hinge; }
-
+.notification-system { display: flex; justify-content: flex-end; }
+.notification-system .notification_list_bottom{ bottom: 0; flex-direction: column-reverse; display: flex; gap: 8px; height: 0; margin: 15px 50px 50px 15px; position: fixed; z-index: 12000;}
+.notification-system .notification_list_bottom .notification{ display: flex; justify-content: space-between; width: 300px; transition: all .3s; border-radius: 8px; padding: 15px; background-color: #282828;}
+.notification-system .notification_list_bottom .notification .notification_title{ padding-left: 30px; color: #fff; font-size: 12px; text-align: center; line-height: 18px;}
+.notification-system .notification_list_bottom .notification .notification_title.success{ background: url(../images/check.png) left center no-repeat; font-size: 14px; background-size: 30px 30px;}
+.notification-system .notification_list_bottom .notification .notification_title.error{ background: url(../images/close_stock.png) left center no-repeat; background-size: 30px 30px;}
+.notification-system .notification_list_bottom .notification .notification_link .orange-button{ width: 105px; height: 40px; line-height: 40px; font-size: 15px; border-radius: 15px;}
+.notification-system .notification_list_bottom .notification .notification_close{ cursor: pointer; margin-top: -6px;}
 @media (max-width: 769px) {
-    .white-popup{
-        max-width: 100%;
-    }
+    .notification-system .notification_list_bottom{ margin: 15px 45px 20px;}
+    .notification-system .notification_list_bottom .notification {width: 275px; padding: 12px;}
+    .notification-system .notification_list_bottom .notification .notification_link .orange-button{width: 90px; font-size: 14px;}
+    .white-popup{ max-width: 100%; }
     .text_description {
         padding-left:0!important;
         padding-right:0!important;

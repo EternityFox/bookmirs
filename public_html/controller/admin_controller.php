@@ -110,7 +110,12 @@ switch ($view) {
         $news = getNewsDetail($news_id);
         break;
     case('coupons'):
-        $coupons = getCoupons();
+        $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 10;
+        $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+        $offset = ($page - 1) * $limit;
+        $coupons = getCoupons($limit, $offset);
+        $totalCoupons = getCouponsCount();
+        $totalPages = ceil($totalCoupons / $limit);
         break;
     case('add_coupon'):
         break;
