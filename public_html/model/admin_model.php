@@ -147,11 +147,17 @@ function getVacancyDetail($vid)
     return $vacancyDetail;
 }
 
-function getCoupons($limit = 10, $offset = 0, $orderBy = 'updated_at')
+function getCoupons($limit = 10, $offset = 0, $orderBy = 'updated_at', $search = '')
 {
+    $where = 'WHERE phone IS NOT NULL';
+    if ($search !== '') {
+        $search = mysql_real_escape_string($search);
+        $where .= " AND code LIKE '%$search%'";
+    }
+
     $query = 'SELECT id as vid, code, name, email, phone, updated_at 
               FROM coupons 
-              WHERE phone IS NOT NULL  
+              ' . $where . ' 
               ORDER BY ' . $orderBy . ' DESC 
               LIMIT ' . intval($limit) . ' OFFSET ' . intval($offset);
     $res = mysql_query($query) or die(mysql_error());
@@ -162,9 +168,15 @@ function getCoupons($limit = 10, $offset = 0, $orderBy = 'updated_at')
     return $coupons;
 }
 
-function getCouponsCount()
+function getCouponsCount($search = '')
 {
-    $query = 'SELECT COUNT(*) as count FROM coupons WHERE phone IS NOT NULL';
+    $where = 'WHERE phone IS NOT NULL';
+    if ($search !== '') {
+        $search = mysql_real_escape_string($search);
+        $where .= " AND code LIKE '%$search%'";
+    }
+
+    $query = 'SELECT COUNT(*) as count FROM coupons ' . $where;
     $res = mysql_query($query) or die(mysql_error());
     $row = mysql_fetch_assoc($res);
     return $row['count'];
