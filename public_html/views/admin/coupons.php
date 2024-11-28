@@ -1,13 +1,14 @@
 <?php defined('IS_I_SITE') or die('Access denied'); ?>
 <?php if ($coupons): ?>
     <h1 class="page-header">Купоны</h1>
+    <div class="coupon-number my-3">Кол-во зарегистрированных купонов: <strong><?= $totalCoupons ?></strong></div>
     <div class="coupons-helpers">
         <form method="GET" action="/admin/" class="form-inline mb-3">
             <input type="hidden" name="view" value="coupons">
             <div class="form-group">
-                <label for="search" class="mr-2">Поиск по купону:</label>
+                <label for="search" class="mr-2">Поиск:</label>
                 <input type="text" name="search" id="search" class="form-control mr-2"
-                       value="<?= $search ?>" placeholder="Введите купон">
+                       value="<?= $search ?>" placeholder="поиск...">
             </div>
             <button type="submit" class="btn btn-primary">Искать</button>
         </form>

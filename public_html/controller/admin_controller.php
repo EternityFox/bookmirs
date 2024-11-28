@@ -115,8 +115,9 @@ switch ($view) {
         $search = isset($_GET['search']) ? trim($_GET['search']) : '';
         $offset = ($page - 1) * $limit;
         $coupons = getCoupons($limit, $offset, 'updated_at', $search);
-        $totalCoupons = getCouponsCount($search);
-        $totalPages = ceil($totalCoupons / $limit);
+        $totalPaginateCoupons = getCouponsPagingateCount($search);
+        $totalCoupons = getCouponsCount();
+        $totalPages = ceil($totalPaginateCoupons / $limit);
         break;
     case('add_coupon'):
         break;

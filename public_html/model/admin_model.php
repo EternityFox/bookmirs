@@ -152,7 +152,10 @@ function getCoupons($limit = 10, $offset = 0, $orderBy = 'updated_at', $search =
     $where = 'WHERE phone IS NOT NULL';
     if ($search !== '') {
         $search = mysql_real_escape_string($search);
-        $where .= " AND code LIKE '%$search%'";
+        $where .= " AND (code LIKE '%$search%'";
+        $where .= " OR name LIKE '%$search%'";
+        $where .= " OR phone LIKE '%$search%'";
+        $where .= " OR email LIKE '%$search%')";
     }
 
     $query = 'SELECT id as vid, code, name, email, phone, updated_at 
@@ -168,14 +171,26 @@ function getCoupons($limit = 10, $offset = 0, $orderBy = 'updated_at', $search =
     return $coupons;
 }
 
-function getCouponsCount($search = '')
+function getCouponsPagingateCount($search = '')
 {
     $where = 'WHERE phone IS NOT NULL';
     if ($search !== '') {
         $search = mysql_real_escape_string($search);
-        $where .= " AND code LIKE '%$search%'";
+        $where .= " AND (code LIKE '%$search%'";
+        $where .= " OR name LIKE '%$search%'";
+        $where .= " OR phone LIKE '%$search%'";
+        $where .= " OR email LIKE '%$search%')";
     }
 
+    $query = 'SELECT COUNT(*) as count FROM coupons ' . $where;
+    $res = mysql_query($query) or die(mysql_error());
+    $row = mysql_fetch_assoc($res);
+    return $row['count'];
+}
+
+function getCouponsCount()
+{
+    $where = 'WHERE phone IS NOT NULL';
     $query = 'SELECT COUNT(*) as count FROM coupons ' . $where;
     $res = mysql_query($query) or die(mysql_error());
     $row = mysql_fetch_assoc($res);
