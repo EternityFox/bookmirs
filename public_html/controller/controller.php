@@ -219,6 +219,8 @@ switch ($view) {
         $view = 'promotion';
         $shops = getShops();
         $questions = getQuestions();
+        $winners = getWinnersAll();
+        $coupons_chance = getChanceWin();
         $_SESSION['promotion'] = false;
         break;
     case('compare'):

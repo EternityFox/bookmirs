@@ -3,6 +3,576 @@
         color: #ef7f1a !important;
     }
 
+    .winner-prize-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .winner-prize-title p {
+        font-size: 24px;
+    }
+
+    .winner-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    #summaryContent {
+        max-height: 300px;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+    }
+
+
+    .modal-dialog.modal-promo {
+        position: relative;
+        min-width: 800px;
+    }
+
+    .close-modal-promo {
+        position: absolute;
+        top: 15px;
+        z-index: 10;
+        right: 16px;
+    }
+
+    #promoModal {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .close-modal-promo .btn-close {
+        width: 3em;
+        height: 3em;
+        background-size: 50% 50%;
+        opacity: 0.7;
+        filter: invert(1);
+    }
+
+    .modal-wins-img {
+        position: absolute;
+        top: 20px;
+    }
+
+    .modal-wins-img img {
+        width: 1200px;
+    }
+
+    .modal-content.modal-content-promo {
+        background: transparent;
+        box-shadow: none;
+        border: none;
+        align-items: center;
+    }
+
+    .carousel-item-text h3 {
+        font-size: 30px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .carousel-item-text {
+        text-align: center;
+        background: #ffffff;
+        width: 475px;
+        padding: 16px;
+        border: 5px solid transparent;
+        border-image: radial-gradient(circle, rgba(239, 127, 26, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(239, 127, 26, 1) 100%);
+        -moz-border-image: -moz-radial-gradient(circle, rgba(239, 127, 26, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(239, 127, 26, 1) 100%);
+        -webkit-border-image: -webkit-radial-gradient(circle, rgba(239, 127, 26, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(239, 127, 26, 1) 100%);
+        border-image-slice: 1;
+    }
+
+    .promo-win-block:after {
+        content: '';
+        position: absolute;
+        height: 40px;
+        top: -45px;
+        right: 25%;
+        background: #ef7f1a;
+        border: 1px solid transparent;
+        border-image: radial-gradient(circle, rgba(239, 127, 26, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(239, 127, 26, 1) 100%);
+        -moz-border-image: -moz-radial-gradient(circle, rgba(239, 127, 26, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(239, 127, 26, 1) 100%);
+        -webkit-border-image: -webkit-radial-gradient(circle, rgba(239, 127, 26, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(239, 127, 26, 1) 100%);
+        border-image-slice: 1;
+    }
+
+    .promo-win-block:before {
+        content: '';
+        position: absolute;
+        top: -45px;
+        left: 25%;
+        height: 40px;
+        background: #ef7f1a;
+        border: 1px solid transparent;
+        border-image: radial-gradient(circle, rgba(239, 127, 26, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(239, 127, 26, 1) 100%);
+        -moz-border-image: -moz-radial-gradient(circle, rgba(239, 127, 26, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(239, 127, 26, 1) 100%);
+        -webkit-border-image: -webkit-radial-gradient(circle, rgba(239, 127, 26, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(239, 127, 26, 1) 100%);
+        border-image-slice: 1;
+    }
+
+    .promo-win-block {
+        background: #ffffff;
+        position: relative;
+        padding: 24px;
+        margin-top: 16px;
+        width: 600px;
+        border: 5px solid transparent;
+        border-image: radial-gradient(circle, rgba(239, 127, 26, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(239, 127, 26, 1) 100%);
+        -moz-border-image: -moz-radial-gradient(circle, rgba(239, 127, 26, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(239, 127, 26, 1) 100%);
+        -webkit-border-image: -webkit-radial-gradient(circle, rgba(239, 127, 26, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(239, 127, 26, 1) 100%);
+        border-image-slice: 1;
+    }
+
+    .promo-win-btn {
+        color: #ffffff;
+        margin: 40px auto 0;
+        display: flex;
+        width: 300px;
+        font-size: 20px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .carousel-control-promo {
+        opacity: 0.7;
+    }
+
+    .carousel-control-promo .carousel-control-prev-icon, .carousel-control-promo .carousel-control-next-icon {
+        width: 3rem;
+        height: 3rem;
+        border: 4px solid #ef7f1a;
+        border-radius: 50%;
+        background-size: 80% 80%;
+    }
+
+    .carousel-control-promo .carousel-control-prev-icon {
+        background-position: 25%;
+    }
+
+    .carousel-control-promo .carousel-control-next-icon {
+        background-position: 50%;
+    }
+
+    .digits {
+        display: flex;
+        justify-content: center;
+        font-size: 36px;
+        margin: 20px 0;
+    }
+
+    .digit {
+        width: 30px;
+        height: 50px;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+        border: 1px solid #444;
+        background: #ef7f1a;
+        color: #fff;
+        margin: 0 5px;
+        border-radius: 5px;
+    }
+
+    .digit .numbers {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    .digit .numbers span {
+        display: block;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    /* Начальные стили для блока победителя */
+    .winner {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(1);
+        border: 5px solid transparent;
+        border-image: radial-gradient(circle, rgba(239, 127, 26, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(239, 127, 26, 1) 100%);
+        -moz-border-image: -moz-radial-gradient(circle, rgba(239, 127, 26, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(239, 127, 26, 1) 100%);
+        -webkit-border-image: -webkit-radial-gradient(circle, rgba(239, 127, 26, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(239, 127, 26, 1) 100%);
+        border-image-slice: 1;
+        background: #fff;
+        padding: 20px;
+        opacity: 0;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+        z-index: 999;
+    }
+
+    /* Появление блока победителя */
+    .winner.show {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(3); /* Увеличение блока */
+    }
+
+    /* Переход блока к списку победителей */
+    .winner.to-list {
+        position: absolute;
+        transform: translate(0, 0) scale(1);
+        top: 40%;
+        right: 5%;
+        transition: transform 1s ease, opacity 0.5s ease;
+        z-index: 0;
+        opacity: 0;
+    }
+
+
+    .modal-content {
+        background: #f8f9fa;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    #winnerList.hide {
+        opacity: 0;
+    }
+
+    #winnerList.show {
+        opacity: 1;
+    }
+
+    #winnerList {
+        position: absolute;
+        top: 30%;
+        right: 5%;
+        background: #ffffff;
+        padding: 24px;
+        margin-top: 16px;
+        width: 350px;
+        border: 5px solid transparent;
+        border-image: radial-gradient(circle, rgba(239, 127, 26, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(239, 127, 26, 1) 100%);
+        -moz-border-image: -moz-radial-gradient(circle, rgba(239, 127, 26, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(239, 127, 26, 1) 100%);
+        -webkit-border-image: -webkit-radial-gradient(circle, rgba(239, 127, 26, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(239, 127, 26, 1) 100%);
+        border-image-slice: 1;
+        transition: opacity 0.5s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .wins-list {
+        text-align: center;
+        margin-bottom: 12px;
+        font-size: 18px;
+    }
+
+    .winnerList .win-item {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .winnerList .win-item span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 150px;
+        display: inline-block;
+    }
+
+    #draw:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+
+    #draw:enabled {
+        background-color: #007bff;
+    }
+
+    /* Общий стиль */
+    .promo-wrapper {
+        display: flex;
+        flex-direction: row;
+        margin: 20px auto;
+        padding: 20px;
+        gap: 20px;
+        background: #f5f5f5;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    .telegram-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background: linear-gradient(92.04deg, #084D99 4.31%, #195EAA 94.63%);
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.27), -4px -4px 12px rgba(255, 255, 255, 0.24);
+        border-radius: 10px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        text-align: center;
+        transition: background 0.3s ease-in-out;
+    }
+
+    .telegram-button:hover {
+        animation: pulse 1s;
+        box-shadow: 0 0 0 2em transparent;
+        color: #000000;
+    }
+
+    .info-card-title {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .info-card {
+        background: linear-gradient(145deg, #f0f0f0, #fafafa);
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        animation: scaleUp 0.5s ease-in-out;
+    }
+
+    .info-card-items {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 16px;
+        align-items: flex-start;
+    }
+
+    .info-card-item {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .info-card-item .info-card-item-number {
+        background: #175CA8;
+        border-radius: 50%;
+        font-size: 18px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        min-width: 30px;
+        color: #ffffff;
+        max-width: 30px;
+    }
+
+    .info-card-item-text {
+        text-align: left;
+    }
+
+    .info-card-description {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    /* Заголовки */
+    .promo-participants-title {
+        font-size: 1.6rem;
+        color: #333;
+        text-align: center;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+
+    /* Поле поиска */
+    .search-person-container {
+        width: 100%;
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    #searchInput, #searchCouponInput {
+        width: 100%;
+        text-align: center;
+        max-width: 350px;
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 30px;
+        background: #fff;
+        transition: box-shadow 0.3s ease, transform 0.2s ease;
+    }
+
+    .promo-table-container {
+        overflow-x: auto;
+    }
+
+    .promo-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .promo-table th, .promo-table td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #eee;
+    }
+
+    .promo-table th {
+        background: #175CA8;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    .promo-table tbody tr:nth-child(even) {
+        background: #f9f9f9;
+    }
+
+    .promo-table tbody tr:hover {
+        background: #f1f7fd;
+    }
+
+    #searchInput:focus {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transform: scale(1.05);
+    }
+
+    /* Участники */
+    .promo-participants {
+        width: 60%;
+        padding: 20px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .promo-info {
+        width: 40%;
+        position: sticky;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .participant-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+        animation: slideIn 0.5s ease-in-out;
+    }
+
+    .participant-row:last-child {
+        border-bottom: none;
+    }
+
+    .participant-number {
+        font-weight: bold;
+        color: #555;
+        width: 40px;
+    }
+
+    .participant-name {
+        flex: 1;
+        text-align: left;
+        color: #333;
+        font-size: 1rem;
+    }
+
+    .participant-chance {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    /* Прогресс-бар */
+    .progress-bar-container {
+        width: 100%;
+        background: #eee;
+        border-radius: 5px;
+        position: relative;
+        height: 30px;
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        height: 100%;
+        background: linear-gradient(168.17deg, #0196BE 29.93%, #72C44B 97.43%);
+        color: #fff;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+    }
+
+    .progress-text {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-weight: bold;
+        color: #686767;
+    }
+
+    /* Кнопка "Показать ещё" */
+    .load-more-button {
+        margin: 20px auto;
+        background: linear-gradient(92.04deg, #084D99 4.31%, #195EAA 94.63%);
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.27), -4px -4px 12px rgba(255, 255, 255, 0.24);
+        padding: 10px 24px;
+        font-size: 1rem;
+        color: #fff;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        text-align: center;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .load-more-button:hover {
+        transform: scale(1.05);
+    }
+
+    /* Анимации */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateX(-20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes grow {
+        from {
+            width: 0;
+        }
+        to {
+            width: var(--width);
+        }
+    }
+
     .container {
         margin-top: 50px;
         text-align: center;
@@ -269,6 +839,7 @@
     .promotion-prizes-price {
         font-size: 3rem;
         color: #ffffff;
+        white-space: nowrap;
     }
 
     .promotion-prizes-description {
@@ -320,7 +891,7 @@
     }
 
     .promotion-participation-number {
-        background: #007bff;
+        background: #175CA8;
         border-radius: 50%;
         width: 36px;
         height: 36px;
@@ -459,14 +1030,30 @@
     }
 
     @media (max-width: 769px) {
-        .promotion-info-block .promotion-info-text{
+        .promotion-info-block .promotion-info-text {
             font-size: 12px;
             padding: 20px 12px;
             text-align: justify;
         }
 
+        .promo-wrapper {
+            flex-direction: column;
+        }
+
+        .promo-participants, .promo-info {
+            width: 100%;
+        }
+
         .container-fon {
             height: 50vh;
+        }
+
+        .count-coupons {
+            display: none;
+        }
+
+        .promo-info h3 {
+            font-size: 30px;
         }
 
         .promotion-header-block {
@@ -830,6 +1417,458 @@
             </div>
         </div>
     </div>
+    <?php if ($_SESSION['auth']['role'] == 7): ?>
+        <div class="modal show" tabindex="-1"
+             style="background: rgba(0, 0, 0, 0.8);" id="promoModal">
+            <div class="modal-header close-modal-promo border-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-wins-img">
+                <img src="views/bookmirs/images/wins.png" alt="Лента с деньгами и кубком">
+            </div>
+            <button class="carousel-control-prev carousel-control-promo" type="button" data-bs-target="#prizeCarousel"
+                    data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Предыдущий</span>
+            </button>
+            <button class="carousel-control-next carousel-control-promo" type="button" data-bs-target="#prizeCarousel"
+                    data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Следующий</span>
+            </button>
+            <div id="winnerList" class="hide">
+            </div>
+            <div class="winner" id="winner"></div>
+            <div class="modal-dialog modal-promo">
+                <div class="modal-content modal-content-promo">
+                    <div id="prizeCarousel" class="carousel slide my-4 carousel-dark carousel-promo"
+                         data-bs-ride="false">
+                        <div class="carousel-inner">
+                            <!-- Призы в порядке возрастания -->
+                            <div class="carousel-item active carousel-item-promo" data-prize-index="0">
+                                <div class="carousel-item-text"><h3>Приз на 5 000 ₽</h3></div>
+                            </div>
+                            <div class="carousel-item carousel-item-promo" data-prize-index="1">
+                                <div class="carousel-item-text"><h3>Приз на 10 000 ₽</h3></div>
+                            </div>
+                            <div class="carousel-item carousel-item-promo" data-prize-index="2">
+                                <div class="carousel-item-text"><h3>Приз на 20 000 ₽</h3></div>
+                            </div>
+                            <div class="carousel-item carousel-item-promo" data-prize-index="3">
+                                <div class="carousel-item-text"><h3>Главный приз на 50 000 ₽</h3></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="promo-win-block">
+                        <div class="digits" id="digits">
+                            <?php for ($i = 0; $i < 10; $i++): ?>
+                                <div class="digit">
+                                    <div class="numbers">
+                                        <?php for ($j = 0; $j < 10; $j++): ?>
+                                            <span><?= $j ?></span>
+                                        <?php endfor; ?>
+                                    </div>
+                                </div>
+                            <?php endfor; ?>
+                        </div>
+                        <button class="btn promo-win-btn btn-blue-mirs" id="draw">Выявить победителя</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            document.querySelector('.close-modal-promo').addEventListener('click', function () {
+                const modal = document.getElementById('promoModal');
+                modal.classList.remove('show'); // Hide the modal
+                modal.style.display = 'none'; // Optional: hide modal from layout
+            });
+            let prizeWinners = {0: [], 1: [], 2: [], 3: []};
+            let prizeRemaining = {0: 10, 1: 5, 2: 3, 3: 1};
+            const drawButton = document.getElementById('draw');
+            let activeSlide = document.querySelector('.carousel-item.active');
+            let prizeIndex = activeSlide.getAttribute('data-prize-index');
+            document.getElementById('draw').addEventListener('click', async () => {
+                // Блокируем кнопку, чтобы избежать повторных нажатий
+                drawButton.disabled = true;
+
+                // Блокируем переключение слайдов
+                const prevButton = document.querySelector('.carousel-control-prev');
+                const nextButton = document.querySelector('.carousel-control-next');
+                prevButton.disabled = true;
+                nextButton.disabled = true;
+                // Имитируем запрос на сервер
+                const response = await fetch('/functions/ajax_calculate_win.php', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({prizeIndex})
+                });
+                const data = await response.json();
+                const winnerCode = data.code;
+
+                const digits = document.querySelectorAll('.digit .numbers');
+                const winnerBlock = document.getElementById('winner');
+
+                // Сбрасываем барабаны
+                digits.forEach(numbers => {
+                    numbers.style.transition = 'none'; // Отключаем transition
+                    numbers.style.transform = 'translateY(0)';
+
+                    // Включаем transition обратно
+                    setTimeout(() => {
+                        numbers.style.transition = 'transform 4.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)';
+                    }, 50);
+                });
+
+                // Добавляем задержку перед началом анимации вращения
+                setTimeout(() => {
+                    [...winnerCode].forEach((targetDigit, index) => {
+                        setTimeout(() => {
+                            const numbersElement = digits[index];
+                            if (!numbersElement) return;
+                            const spins = Math.floor(Math.random() * 5) + 5; // Полные обороты
+                            const targetPosition = targetDigit * 50; // Позиция целевой цифры
+                            const totalHeight = spins * 500 + targetPosition; // Общая высота прокрутки
+                            const adjustedHeight = totalHeight % 500; // Корректируем высоту
+                            numbersElement.style.transform = `translateY(-${adjustedHeight}px)`; // Итоговая позиция
+                        }, index * 500); // Задержка для последовательности
+                    });
+
+                    // Показ победителя после завершения всех анимаций
+                    setTimeout(() => {
+                        const fullName = data.name.split(' ');
+                        const initials = `${fullName[1]} ${fullName[0][0]}.`;
+                        winnerBlock.innerHTML = `<span>Победитель: ${initials} <br>${data.code}</span>`;
+                        winnerBlock.classList.add('show');
+                        setTimeout(() => {
+                            // Перемещаем блок в список победителей
+                            winnerBlock.classList.remove('show');
+                            winnerBlock.classList.add('to-list');
+                        }, 3000); // Время для завершения перемещения
+                        loadWinners(prizeIndex);
+                        winnerBlock.classList.remove('to-list');
+
+
+                        // Разблокируем переключение слайдов
+                        prevButton.disabled = false;
+                        nextButton.disabled = false;
+                    }, winnerCode.length * 1000); // Задержка до вывода победителя
+                }, 1000); // Задержка перед началом анимации
+            });
+
+            // Обработчик переключения слайдера
+            document.querySelector('#prizeCarousel').addEventListener('slid.bs.carousel', (event) => {
+                activeSlide = document.querySelector('.carousel-item.active');
+                prizeIndex = activeSlide.getAttribute('data-prize-index');
+                loadWinners(prizeIndex);
+            });
+
+            async function loadWinners(prizeIndex) {
+                const response = await fetch(`/functions/ajax_show_wins.php?prizeIndex=${prizeIndex}`);
+                const winners = await response.json();
+                const winnerList = document.getElementById('winnerList');
+                winnerList.innerHTML = ''; // Очищаем старый список
+
+                if (winners.length > 0) {
+                    prizeWinners[prizeIndex] = [];
+                    winnerList.innerHTML = '<div class="wins-list">Список победителей</div>';
+                    winners.forEach((winner, index) => {
+                        prizeWinners[prizeIndex].push({code: winner.code, name: winner.name});
+                        prizeRemaining[prizeIndex]--;
+                        const winnerItem = document.createElement('div');
+                        winnerItem.classList.add('win-item');
+                        winnerItem.innerHTML = `${index + 1}. <span>${winner.name}</span> (${winner.code})`;
+                        winnerList.appendChild(winnerItem);
+                    });
+                    if (winnerList.classList.contains('hide')) {
+                        winnerList.classList.remove('hide');
+                        winnerList.classList.add('show');
+                    }
+                } else {
+                    if (winnerList.classList.contains('show')) {
+                        winnerList.classList.remove('show');
+                        winnerList.classList.add('hide');
+                    }
+                }
+                if (prizeRemaining[prizeIndex] <= 0) {
+                    drawButton.disabled = true;
+                } else {
+                    drawButton.disabled = false;
+                }
+            }
+
+            loadWinners(prizeIndex);
+        </script>
+        <div class="container" id="scrollspyWins">
+            <?php if (json_decode($winners, true)): ?>
+                <?php
+                $winner_prizers = json_decode($winners, true);
+                ?>
+                <div class="promo-wrapper align-items-center">
+                    <div class="promo-participants">
+                        <h2 class="promo-participants-title">🎉 Поздравляем победителей розыгрыша! 🎉</h2>
+                        <div class="search-person-container">
+                            <input type="text" id="searchCouponInput" placeholder="Введите номер купона..."/>
+                        </div>
+                        <div id="summaryContent">
+                            <?php foreach ($winner_prizers as $winners_prizer): ?>
+                                <div class="winner-prize-title"><?= $winners_prizer['prize'] ?>
+                                    <?php foreach ($winners_prizer['winners'] as $index => $winner): ?>
+                                        <div class="winner-item"><span
+                                                    class="winner-number"><?= $index + 1 ?>.</span><?= $winner['code'] ?>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <button id="toggleSummaryButton" class="load-more-button mt-4">Отобразить все</button>
+                    </div>
+                    <div class="promo-info">
+                        <iframe width="100%" height="450" src="https://www.youtube.com/embed/T7UeYZEgLAg"
+                                title="White Diamond" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
+                    </div>
+                    <script>
+                        const toggleButton = document.getElementById('toggleSummaryButton');
+                        const summaryContent = document.getElementById('summaryContent');
+                        const searchCouponInput = document.getElementById('searchCouponInput');
+
+                        let isExpanded = false;
+
+                        // Отображение/скрытие полного списка
+                        toggleButton.addEventListener('click', () => {
+                            isExpanded = !isExpanded;
+                            summaryContent.style.maxHeight = isExpanded ? 'none' : '300px';
+                            toggleButton.textContent = isExpanded ? 'Скрыть' : 'Отобразить все';
+                        });
+
+                        // Поиск по номеру купона
+                        searchCouponInput.addEventListener('input', () => {
+                            const query = searchCouponInput.value.trim(); // Получаем введенный текст
+                            const winnerItems = document.querySelectorAll('#summaryContent .winner-item');
+
+                            // Обходим все элементы winner-item и фильтруем их
+                            winnerItems.forEach(item => {
+                                const couponNumber = item.textContent.trim(); // Извлекаем текст номера купона
+                                if (couponNumber.includes(query) || query === '') {
+                                    item.style.display = 'block'; // Показываем элемент, если он соответствует запросу
+                                } else {
+                                    item.style.display = 'none'; // Скрываем, если не соответствует
+                                }
+                            });
+
+                            // Скрываем категории, где все элементы скрыты
+                            const prizeTitles = document.querySelectorAll('#summaryContent .winner-prize-title');
+                            prizeTitles.forEach(title => {
+                                const visibleItems = title.querySelectorAll('.winner-item:not([style*="display: none"])');
+                                title.style.display = visibleItems.length > 0 ? 'block' : 'none';
+                            });
+                        });
+                    </script>
+                </div>
+            <?php else: ?>
+            <?php
+            // Получаем данные о шансах на победу
+            $chanceData = json_decode($coupons_chance, true);
+            $coupons = $chanceData['coupons'];
+            $chances = $chanceData['chances'];
+            $participants = [];
+
+            foreach ($chances as $phone => $chance) {
+                // Фильтруем купоны по номеру телефона
+                $userCoupons = array_filter($coupons, function ($coupon) use ($phone) {
+                    return $coupon['phone'] === $phone;
+                });
+
+                // Получаем FIO из первого купона, если оно есть
+                $fio = isset(current($userCoupons)['name']) ? current($userCoupons)['name'] : 'Не указано';
+
+                // Преобразуем имя
+                $fioFormatted = preg_replace_callback('/^([А-Яа-яЁё-]+(?:\s+[А-Яа-яЁё-]+)*)$/u', function ($matches) {
+                    $fullName = $matches[1];
+
+                    // Если строка содержит пробел (есть имя и фамилия)
+                    if (strpos($fullName, ' ') !== false) {
+                        // Разделяем по пробелу и берем имя и фамилию
+                        $nameParts = explode(' ', $fullName);
+                        $name = $nameParts[1];
+                        $surname = $nameParts[0];
+
+                        // Если фамилия с дефисом (например, "Осьминина-Ширай")
+                        if (strpos($surname, '-') !== false) {
+                            // Фамилия после дефиса
+                            $surname = explode('-', $surname)[1];
+                        }
+
+                        // Возвращаем Имя и первую букву фамилии
+                        return $name . ' ' . mb_substr($surname, 0, 1) . '.';
+                    }
+
+                    // Если нет пробела, то просто фамилия (или одно слово)
+                    if (strpos($fullName, '-') !== false) {
+                        // Если фамилия через дефис, то берем после дефиса
+                        $surname = explode('-', $fullName)[1];
+                        return $surname . ' ' . mb_substr($fullName, 0, 1) . '.';
+                    }
+
+                    // Если нет пробела и дефиса — выводим одну строку как есть
+                    return $fullName;
+                }, $fio);
+
+                // Добавляем участника с массивом купонов и количеством
+                $participants[] = [
+                    'fio' => $fioFormatted,
+                    'chance' => number_format($chance, 2),
+                    'coupons' => $userCoupons,  // Здесь сохраняем сам массив купонов
+                    'coupon_count' => count($userCoupons),  // Добавляем количество купонов
+                ];
+            }
+
+            // JSON для использования в JavaScript
+            $jsonParticipants = json_encode($participants);
+            ?>
+                <div class="promo-wrapper">
+                    <div class="promo-participants">
+                        <h2 class="promo-participants-title">Участники</h2>
+                        <div class="search-person-container">
+                            <input type="text" id="searchInput" placeholder="Введите № купона..."/>
+                        </div>
+                        <div class="promo-table-container">
+                            <table id="participantsTable" class="promo-table">
+                                <thead>
+                                <tr>
+                                    <th>№</th>
+                                    <th>Имя участника</th>
+                                    <th class="count-coupons">Количество купонов</th>
+                                    <th>Шанс на победу</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                        <button id="loadMoreButton" class="load-more-button">Показать ещё</button>
+                    </div>
+                    <div class="promo-info">
+                        <div class="info-card">
+                            <h3>Дата розыгрыша</h3>
+                            <div class="info-card-title">📅 16.12.2024</div>
+                            <div class="info-card-description">Результаты будут опубликованы на сайте и в <a
+                                        href="https://t.me/mirs_dv">
+                                    <img src="views/bookmirs/images/icon-telegram.png" alt="Иконка телеграмма"
+                                         style="width: 32px;">
+                                </a></div>
+                        </div>
+                        <div class="info-card">
+                            <h3>Порядок получения подарков</h3>
+                            <div class="info-card-items">
+                                <div class="info-card-item">
+                                    <span class="info-card-item-number">1</span>
+                                    <span class="info-card-item-text">Менеджер связывается с победителем по телефону (WhatsApp, эл. почта).</span>
+                                </div>
+                                <div class="info-card-item">
+                                    <span class="info-card-item-number">2</span>
+                                    <span class="info-card-item-text">Договаривается с победителем о месте и времени получения подарка.</span>
+                                </div>
+                                <div class="info-card-item">
+                                    <span class="info-card-item-number">3</span>
+                                    <span class="info-card-item-text">Менеджер отправляет подарок на магазин.</span>
+                                </div>
+                                <div class="info-card-item">
+                                    <span class="info-card-item-number">4</span>
+                                    <span class="info-card-item-text">Сотрудник магазина передает подарок победителю.</span>
+                                </div>
+                                <div class="info-card-item">
+                                    <span class="info-card-item-number">5</span>
+                                    <span class="info-card-item-text">Победитель заполняет Акт о получении подарка и предоставляет персональные данные (паспорт и ИНН).</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="https://t.me/mirs_dv" target="_blank" class="telegram-button">Перейти в Telegram</a>
+                    </div>
+                </div>
+
+                <script>
+                    const participants = <?php echo $jsonParticipants; ?>;
+                    const participantsTable = document.querySelector('#participantsTable tbody');
+                    const loadMoreButton = document.getElementById('loadMoreButton');
+                    const searchInput = document.getElementById('searchInput');
+                    let visibleParticipants = 0;
+                    const participantsPerPage = 25;
+
+                    // Функция для отображения участников
+                    function displayParticipants(filter = '') {
+                        participantsTable.innerHTML = ''; // Очистить текущий список
+                        let count = 0;
+
+                        participants.forEach((participant, index) => {
+                            if (count >= visibleParticipants) return;
+
+                            let isMatch = false;
+
+                            // Получаем список купонов для каждого участника
+                            let userCoupons = participant.coupons;
+
+                            // Проверяем, если coupons это объект, превращаем его в массив
+                            if (userCoupons && typeof userCoupons === 'object' && !Array.isArray(userCoupons)) {
+                                userCoupons = Object.values(userCoupons); // Преобразуем объект в массив
+                            }
+
+                            // Если фильтр — это номер купона
+                            if (filter) {
+                                // Проходим по каждому купону и проверяем, совпадает ли его номер с фильтром
+                                if (userCoupons.some(coupon => coupon.code.includes(filter))) {
+                                    isMatch = true;
+                                }
+                            } else {
+                                // Если фильтра нет — отображаем всех участников
+                                isMatch = true;
+                            }
+
+                            if (isMatch) {
+                                const row = `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${participant.fio}</td>
+                        <td class="count-coupons">${userCoupons.length}</td>
+                        <td>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: ${participant.chance}%; animation: grow ${participant.chance / 100 + 0.5}s ease-in-out;">
+                                    <span class="progress-text">${participant.chance}%</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>`;
+                                participantsTable.insertAdjacentHTML('beforeend', row);
+                                count++;
+                            }
+                        });
+
+                        // Скрыть кнопку "Показать ещё", если больше нечего показывать
+                        loadMoreButton.style.display =
+                            visibleParticipants >= participants.length ? 'none' : 'block';
+                    }
+
+                    // Загрузить начальные участники
+                    visibleParticipants = participantsPerPage;
+                    displayParticipants();
+
+                    // Обработчик для кнопки "Показать ещё"
+                    loadMoreButton.addEventListener('click', () => {
+                        visibleParticipants += participantsPerPage;
+                        displayParticipants(searchInput.value);
+                    });
+
+                    // Обработчик для поиска
+                    searchInput.addEventListener('input', (e) => {
+                        const filter = e.target.value;
+                        visibleParticipants = participantsPerPage;
+                        displayParticipants(filter);
+                    });
+                </script>
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>
     <div class="container" id="scrollspyParticipation">
         <div class="promotion-prizes">
             <h2 class="promotion-prizes-title head-text text-white">Как принять участие в акции?</h2>
@@ -838,25 +1877,29 @@
                 <div id="participationCarousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="views/bookmirs/images/promotion-slider-1.png" class="d-block w-100" alt="Слайд 1">
+                            <img src="views/bookmirs/images/promotion-slider-1.png" class="d-block w-100"
+                                 alt="Слайд 1">
                             <div class="carousel-caption promotion-carousel-text">
                                 <p>Совершите покупку на сумму от 1000 рублей</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="views/bookmirs/images/promotion-slider-2.png" class="d-block w-100" alt="Слайд 2">
+                            <img src="views/bookmirs/images/promotion-slider-2.png" class="d-block w-100"
+                                 alt="Слайд 2">
                             <div class="carousel-caption promotion-carousel-text">
                                 <p>Получите чек и купон участника</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="views/bookmirs/images/promotion-slider-3.png" class="d-block w-100" alt="Слайд 3">
+                            <img src="views/bookmirs/images/promotion-slider-3.png" class="d-block w-100"
+                                 alt="Слайд 3">
                             <div class="carousel-caption promotion-carousel-text">
                                 <p>Зарегистрируйте купон на сайте</p>
                             </div>
                         </div>
                         <div class="carousel-item">
-                            <img src="views/bookmirs/images/promotion-slider-4.png" class="d-block w-100" alt="Слайд 4">
+                            <img src="views/bookmirs/images/promotion-slider-4.png" class="d-block w-100"
+                                 alt="Слайд 4">
                             <div class="carousel-caption promotion-carousel-text">
                                 <p>Дождитесь итогов розыгрыша и получите свой приз <a
                                             href="https://t.me/mirs_dv">
@@ -905,7 +1948,8 @@
                         <?php foreach ($questions as $question): ?>
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading<?= $question['id'] ?>">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse"
                                             data-bs-target="#collapse<?= $question['id'] ?>" aria-expanded="false"
                                             aria-controls="collapse<?= $question['id'] ?>">
                                         <?= $question['question'] ?>
@@ -944,8 +1988,10 @@
         </div>
         <div class="promotion-info-text">
             Срок участия в Акции с 15.11.2024г. по 15.12.2024г. Общий срок Акции, включая срок вручения призов с
-            15.11.2024г. по 31.12.2024г. Информация об организаторе Акции, правилах ее проведения, участвующей в Акции
-            продукции, сроках, количестве призов, месте и порядке их получения размещены на сайте bookmirs.ru в разделе
+            15.11.2024г. по 31.12.2024г. Информация об организаторе Акции, правилах ее проведения, участвующей в
+            Акции
+            продукции, сроках, количестве призов, месте и порядке их получения размещены на сайте bookmirs.ru в
+            разделе
             "Акция"
         </div>
     </div>

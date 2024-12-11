@@ -64,7 +64,7 @@ function getPromoModal()
 {
     $now = time();
     $to_day = date('Y-m-d', $now);
-    $query = "SELECT * FROM promotions WHERE data_start <='" . $to_day . "'AND data_end >='".$to_day." ORDER BY created_at' LIMIT 1";
+    $query = "SELECT * FROM promotions WHERE data_start <='" . $to_day . "'AND data_end >='" . $to_day . " ORDER BY created_at' LIMIT 1";
     $res = mysql_query($query);
     $promo_modal = mysql_fetch_assoc($res);
     return $promo_modal;
@@ -95,6 +95,77 @@ function getQuestions()
     }
     return $questions;
 
+}
+
+function getWinnersAll()
+{
+    $prizes = [
+        ['name' => '<p>🥉 <b>Призы (5 000 руб.):</b></p>'],
+        ['name' => '<p>🥈 <b>Призы (10 000 руб.):</b></p>'],
+        ['name' => '<p>🏅 <b>Призы (20 000 руб.):</b></p>'],
+        ['name' => '<p>🏆 <b>Главный приз (50 000 руб.):</b></p>']
+    ];
+    $query = 'SELECT prize_index, winner_code_id FROM winners ORDER BY prize_index ASC';
+    $res = mysql_query($query) or die(mysql_error());
+    $groupedWinners = [];
+
+    while ($row = mysql_fetch_assoc($res)) {
+        $winner_code_id = $row['winner_code_id'];
+        $prize_index = (int)$row['prize_index'] - 1;
+        $query_coupon = "SELECT code, name FROM coupons WHERE id='" . intval($winner_code_id) . "' LIMIT 1";
+        $res_coupon = mysql_query($query_coupon) or die(mysql_error());
+        $coupon = mysql_fetch_assoc($res_coupon);
+        if (!isset($groupedWinners[$prize_index])) {
+            $groupedWinners[$prize_index] = [
+                'prize' => $prizes[$prize_index]['name'],
+                'winners' => []
+            ];
+        }
+
+        $groupedWinners[$prize_index]['winners'][] = [
+            'code' => $coupon['code'],
+            'name' => $coupon['name']
+        ];
+    }
+    krsort($groupedWinners);
+    $finalOutput = [];
+    foreach ($groupedWinners as $group) {
+        $finalOutput[] = [
+            'prize' => $group['prize'],
+            'winners' => $group['winners']
+        ];
+    }
+
+    return json_encode($finalOutput, JSON_UNESCAPED_UNICODE);
+}
+
+function getChanceWin()
+{
+    $query = "SELECT code, name, phone  FROM coupons WHERE phone IS NOT NULL";
+    $res = mysql_query($query) or die(mysql_query());
+    $phoneGroups = [];
+    $coupons = array();
+    while ($row = mysql_fetch_assoc($res)) {
+        $coupons[] = $row;
+        $phoneGroups[$row['phone']][] = $row;
+    }
+    $totalCoupons = getCouponsCount();
+    $chances = [];
+    foreach ($phoneGroups as $phone => $couponsByPhone) {
+        $chance = (count($couponsByPhone) / $totalCoupons) * 100;
+        $chances[$phone] = $chance;
+    }
+    arsort($chances);
+    return json_encode(array('coupons' => $coupons, 'chances' => $chances));
+}
+
+function getCouponsCount()
+{
+    $where = 'WHERE phone IS NOT NULL';
+    $query = 'SELECT COUNT(*) as count FROM coupons ' . $where;
+    $res = mysql_query($query) or die(mysql_error());
+    $row = mysql_fetch_assoc($res);
+    return $row['count'];
 }
 
 function getNewsDetail($news_id)
