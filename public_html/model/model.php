@@ -146,6 +146,26 @@ function getChanceWin()
     $phoneGroups = [];
     $coupons = array();
     while ($row = mysql_fetch_assoc($res)) {
+        $fio = isset($row['name']) ? $row['name'] : 'Не указано';
+        $row['re_name'] = preg_replace_callback('/^([А-Яа-яЁё-]+(?:\s+[А-Яа-яЁё-]+)*)$/u', function ($matches) {
+            $fullName = $matches[1];
+            if (strpos($fullName, ' ') !== false) {
+                $nameParts = explode(' ', $fullName);
+                $surname = $nameParts[0];
+                $name = $nameParts[1];
+                if (strpos($surname, '-') !== false) {
+                    $surname = explode('-', $surname)[1];
+                }
+                return $name . ' ' . mb_substr($surname, 0, 1) . '.';
+            }
+            if (strpos($fullName, '-') !== false) {
+                $surnameParts = explode('-', $fullName);
+                $surname = $surnameParts[1];
+                $initial = mb_substr($surnameParts[0], 0, 1);
+                return $surname . ' ' . $initial . '.';
+            }
+            return $fullName;
+        }, $fio);
         $coupons[] = $row;
         $phoneGroups[$row['phone']][] = $row;
     }

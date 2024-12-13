@@ -1680,43 +1680,9 @@
                     return $coupon['phone'] === $phone;
                 });
 
-                // Получаем FIO из первого купона, если оно есть
-                $fio = isset(current($userCoupons)['name']) ? current($userCoupons)['name'] : 'Не указано';
-
-                // Преобразуем имя
-                $fioFormatted = preg_replace_callback('/^([А-Яа-яЁё-]+(?:\s+[А-Яа-яЁё-]+)*)$/u', function ($matches) {
-                    $fullName = $matches[1];
-
-                    // Если строка содержит пробел (есть имя и фамилия)
-                    if (strpos($fullName, ' ') !== false) {
-                        $nameParts = explode(' ', $fullName);
-                        $surname = $nameParts[0];
-                        $name = $nameParts[1];
-
-                        // Если фамилия с дефисом (например, "Осьминина-Ширай")
-                        if (strpos($surname, '-') !== false) {
-                            $surname = explode('-', $surname)[1]; // Фамилия после дефиса
-                        }
-
-                        // Возвращаем Имя и первую букву фамилии
-                        return $name . ' ' . mb_substr($surname, 0, 1) . '.';
-                    }
-
-                    // Если строка содержит только фамилию с дефисом
-                    if (strpos($fullName, '-') !== false) {
-                        $surnameParts = explode('-', $fullName);
-                        $surname = $surnameParts[1];
-                        $initial = mb_substr($surnameParts[0], 0, 1);
-                        return $surname . ' ' . $initial . '.';
-                    }
-
-                    // Если строка состоит только из одного слова
-                    return $fullName;
-                }, $fio);
-
                 // Добавляем участника с массивом купонов и количеством
                 $participants[] = [
-                    'fio' => $fioFormatted,
+                    'fio' => current($userCoupons)['re_name'],
                     'chance' => number_format($chance, 2),
                     'coupons' => $userCoupons,  // Здесь сохраняем сам массив купонов
                     'coupon_count' => count($userCoupons),  // Добавляем количество купонов
