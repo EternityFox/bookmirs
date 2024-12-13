@@ -1537,7 +1537,7 @@
                     setTimeout(() => {
                         const fullName = data.name.split(' ');
                         const initials = `${fullName[1]} ${fullName[0][0]}.`;
-                        winnerBlock.innerHTML = `<span>Победитель: ${initials} <br>${data.code}</span>`;
+                        winnerBlock.innerHTML = `<span>Победитель: ${data.code}</span>`;
                         winnerBlock.classList.add('show');
                         setTimeout(() => {
                             // Перемещаем блок в список победителей
@@ -1576,7 +1576,7 @@
                         prizeRemaining[prizeIndex]--;
                         const winnerItem = document.createElement('div');
                         winnerItem.classList.add('win-item');
-                        winnerItem.innerHTML = `${index + 1}. <span>${winner.name}</span> (${winner.code})`;
+                        winnerItem.innerHTML = `${index + 1}. <span>${winner.code}</span>`;
                         winnerList.appendChild(winnerItem);
                     });
                     if (winnerList.classList.contains('hide')) {
@@ -1689,29 +1689,28 @@
 
                     // Если строка содержит пробел (есть имя и фамилия)
                     if (strpos($fullName, ' ') !== false) {
-                        // Разделяем по пробелу и берем имя и фамилию
                         $nameParts = explode(' ', $fullName);
-                        $name = $nameParts[1];
                         $surname = $nameParts[0];
+                        $name = $nameParts[1];
 
                         // Если фамилия с дефисом (например, "Осьминина-Ширай")
                         if (strpos($surname, '-') !== false) {
-                            // Фамилия после дефиса
-                            $surname = explode('-', $surname)[1];
+                            $surname = explode('-', $surname)[1]; // Фамилия после дефиса
                         }
 
                         // Возвращаем Имя и первую букву фамилии
                         return $name . ' ' . mb_substr($surname, 0, 1) . '.';
                     }
 
-                    // Если нет пробела, то просто фамилия (или одно слово)
+                    // Если строка содержит только фамилию с дефисом
                     if (strpos($fullName, '-') !== false) {
-                        // Если фамилия через дефис, то берем после дефиса
-                        $surname = explode('-', $fullName)[1];
-                        return $surname . ' ' . mb_substr($fullName, 0, 1) . '.';
+                        $surnameParts = explode('-', $fullName);
+                        $surname = $surnameParts[1];
+                        $initial = mb_substr($surnameParts[0], 0, 1);
+                        return $surname . ' ' . $initial . '.';
                     }
 
-                    // Если нет пробела и дефиса — выводим одну строку как есть
+                    // Если строка состоит только из одного слова
                     return $fullName;
                 }, $fio);
 

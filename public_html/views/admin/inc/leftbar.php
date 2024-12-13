@@ -11,4 +11,6 @@
     <li><a href="/admin/?view=promo_modals">Модальное окно</a></li>
 	<li><a href="/admin/?view=questions">Вопросы</a></li>
 	<li><a href="/admin/?view=coupons">Купоны</a></li>
+	<li><a href="/promotion">Выявить победителей</a></li>
+	<li><a href="/admin/?view=winners">Победители</a></li>
 </ul>
