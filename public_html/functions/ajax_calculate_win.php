@@ -21,26 +21,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo json_encode(['error' => 'Invalid prize index']);
         exit;
     }
-    $where = 'WHERE phone IS NOT NULL';
-    $query = 'SELECT id as vid, code, name, email, phone, updated_at 
+error_log('Received input: ' . json_encode($input));
+    $query = "SELECT id as vid, code, name, email, phone, updated_at 
               FROM coupons 
-              ' . $where . ' 
-              ORDER BY RAND()';
-    $res = mysql_query($query) or die(mysql_error());
-    $coupons = array();
+              WHERE phone IS NOT NULL 
+              ORDER BY RAND()";
+    file_put_contents('/var/www/bookmirs.ru/public_html/functions/test/debug_ajax_log.txt', json_encode(['input' => $input, 'query' => $query]) . PHP_EOL, FILE_APPEND);
+    $res = mysql_query($query) or die(json_encode(['error' => mysql_error()]));
+    $coupons = [];
     while ($row = mysql_fetch_assoc($res)) {
         $coupons[] = $row;
     }
+    if (empty($coupons)) {
+        echo json_encode(['error' => 'No available coupons']);
+        exit;
+    }
     $availableCoupons = array_column($coupons, 'code');
     $winnerIndex = array_rand($availableCoupons);
-    $winnerCode = $availableCoupons[$winnerIndex];
     $winner = $coupons[$winnerIndex];
+
     $now = time();
     $win_date = date('Y-m-d H:i:s', $now);
     $win_id = (int)$winner['vid'];
-    $priz_id = $prizeIndex+1;
-    $insert_query = "INSERT INTO winners (prize_index, winner_code_id, win_date) VALUES('$priz_id', '$win_id', '$win_date')";
+    $priz_id = $prizeIndex + 1;
+
+    $insert_query = "INSERT INTO winners (prize_index, winner_code_id, win_date) VALUES ('$priz_id', '$win_id', '$win_date')";
     $res_winners = mysql_query($insert_query);
+
+    if (!$res_winners) {
+        echo json_encode(['error' => 'Failed to insert winner', 'mysql_error' => mysql_error()]);
+        exit;
+    }
     if ($winner['email']) {
         $message = "Поздравляем, " . $winner['name'] . "! <br><br><br>" . "Мы рады сообщить, что вы стали победителем нашего розыгрыша!". "<br><br>" .
             "Ваш выигрыш: ".$prizes[$prizeIndex]['name']. "<br><br>" .
@@ -48,6 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             . "<br><br><br>" . "Спасибо за участие! Мы свяжемся с вами для передачи приза."
             . "<br><br><br>" . "С уважением, ООО «МИРС»";
         //sendMail($winner['email'], $message);
+        //sleep(5)
     }
 
     // Возвращаем данные победителя
@@ -55,9 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo json_encode([
         'code' => $winner['code'],
         'name' => $winner['name'],
-        'priz_id' => $priz_id,
-        'win_id' => $win_id,
-        'win_date' => $win_date,
         'prize' => $prizes[$prizeIndex]['name']
     ]);
     exit;
