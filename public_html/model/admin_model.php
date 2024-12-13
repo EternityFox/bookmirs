@@ -47,6 +47,81 @@ function getNews($limit = '', $order = '')
     return $news;
 }
 
+function getWinnerDetail($winner_id)
+{
+    $winner = [];
+    $prizes = [
+        ['name' => 'Приз на 5000 руб.'],
+        ['name' => 'Приз на 10000 руб.'],
+        ['name' => 'Приз на 20000 руб.'],
+        ['name' => 'Главный приз на 50000 руб.'],
+    ];
+    $query = "SELECT * FROM winners WHERE id = '$winner_id'";
+    $res = mysql_query($query) or die(mysql_error());
+    if (mysql_num_rows($res) > 0) {
+        while ($row = mysql_fetch_assoc($res)) {
+            $winner_code_id = $row['winner_code_id'];
+            $query_coupon = "SELECT code, name, email, phone FROM coupons WHERE id='" . $winner_code_id . "' LIMIT 1";
+            $res_coupon = mysql_query($query_coupon) or die(mysql_error());
+            $coupon = [];
+            while ($item = mysql_fetch_assoc($res_coupon)) {
+                $coupon[] = $item;
+            }
+            $message = "Поздравляем, " . current($coupon)['name'] . "! <br><br><br>" . "Мы рады сообщить, что вы стали победителем нашего розыгрыша!" . "<br><br>" .
+                "Ваш выигрыш: " . $prizes[$row['prize_index'] - 1]['name'] . "<br><br>" .
+                "Ваш купон: " . current($coupon)['code'] . "<br><br>"
+                . "<br><br><br>" . "Спасибо за участие! Мы свяжемся с вами для передачи приза."
+                . "<br><br><br>" . "С уважением, ООО «МИРС»";
+            $winner = [
+                'id' => $row['id'],
+                'name' => current($coupon)['name'],
+                'email' => current($coupon)['email'],
+                'phone' => current($coupon)['phone'],
+                'code' => current($coupon)['code'],
+                'prize' => $prizes[$row['prize_index'] - 1]['name'],
+                'message' => $message
+            ];
+        }
+    }
+    return json_encode($winner);
+}
+
+function getWinners()
+{
+    $winners = [];
+    $prizes = [
+        ['name' => 'Приз на 5000 руб.'],
+        ['name' => 'Приз на 10000 руб.'],
+        ['name' => 'Приз на 20000 руб.'],
+        ['name' => 'Главный приз на 50000 руб.'],
+    ];
+    for ($prizeIndex = 1; $prizeIndex < 4; $prizeIndex++) {
+        $query = "SELECT id, winner_code_id, win_date FROM winners WHERE prize_index = '$prizeIndex' ORDER BY win_date DESC";
+        $res = mysql_query($query) or die(mysql_error());
+        if (mysql_num_rows($res) > 0) {
+            while ($row = mysql_fetch_assoc($res)) {
+                $winner_code_id = $row['winner_code_id'];
+                $query_coupon = "SELECT code, name, email, phone FROM coupons WHERE id='" . $winner_code_id . "' LIMIT 1";
+                $res_coupon = mysql_query($query_coupon) or die(mysql_error());
+                $coupon = [];
+                while ($item = mysql_fetch_assoc($res_coupon)) {
+                    $coupon[] = $item;
+                }
+
+                $winners[] = [
+                    'id' => $row['id'],
+                    'name' => current($coupon)['name'],
+                    'email' => current($coupon)['email'],
+                    'phone' => current($coupon)['phone'],
+                    'code' => current($coupon)['code'],
+                    'prize' => $prizes[$prizeIndex - 1]['name']
+                ];
+            }
+        }
+    }
+    return json_encode($winners);
+}
+
 function addNews()
 {
     $error = '';
@@ -254,13 +329,24 @@ function editQuestion()
         $query = "UPDATE questions SET name='$name', email='$email', question='$question', answer='$answer', updated_at='$updated_at', active='$active' WHERE id='$question_id'";
         $res = mysql_query($query) or die(mysql_error());
         if ($res && $send_mail && $email) {
+            $subject = "Ответ на ваш вопрос на сайте bookmirs.ru";
             $message = "Здравствуйте, " . $name . "! <br><br><br>" . "Спасибо за ваш вопрос на нашем сайте. Мы рады, что вы обратились к нам и готовы помочь вам с вашим вопросом: " . $question . ".<br><br><br>Наш ответ: " . $answer;
-            sendMail($email, $message);
+            sendMail($email, $subject, $message);
         }
     }
 }
 
-function sendMail($email, $message)
+function sendMessageWin()
+{
+    $email = isset($_POST['email']) ? $_POST['email'] : '';
+    $subject = isset($_POST['subject']) ? $_POST['subject'] : '';
+    $message = isset($_POST['message']) ? $_POST['message'] : '';
+    if ($email) {
+        sendMail($email, $subject, $message);
+    }
+}
+
+function sendMail($email, $subject, $message)
 {
     $host = 'smtp.bookmirs.ru';
     $port = 587;
@@ -279,23 +365,24 @@ function sendMail($email, $message)
         return fgets($socket, 512);
     }
 
-    echo sendCommand($socket, "HELO localhost");
-    echo sendCommand($socket, "AUTH LOGIN");
-    echo sendCommand($socket, base64_encode($username));
-    echo sendCommand($socket, base64_encode($password));
-    echo sendCommand($socket, "MAIL FROM: <$from>");
-    echo sendCommand($socket, "RCPT TO: <$email>");
-    echo sendCommand($socket, "DATA");
+    sendCommand($socket, "HELO localhost");
+    sendCommand($socket, "AUTH LOGIN");
+    sendCommand($socket, base64_encode($username));
+    sendCommand($socket, base64_encode($password));
+    sendCommand($socket, "MAIL FROM: <$from>");
+    sendCommand($socket, "RCPT TO: <$email>");
+    sendCommand($socket, "DATA");
 
     $headers = "From: $from\r\n";
     $headers .= "To: $email\r\n";
-    $headers .= "Subject: Ответ на ваш вопрос на сайте bookmirs.ru\r\n";
+    //$headers .= "Subject: Ответ на ваш вопрос на сайте bookmirs.ru\r\n";
+    $headers .= "Subject: " . $subject . "\r\n";
     $headers .= "MIME-Version: 1.0\r\n";
     $headers .= "Content-type: text/html; charset=UTF-8\r\n";
 
     $fullMessage = $headers . "\r\n" . $message . "\r\n.";
-    echo sendCommand($socket, $fullMessage);
-    echo sendCommand($socket, "QUIT");
+    sendCommand($socket, $fullMessage);
+    sendCommand($socket, "QUIT");
 
     fclose($socket);
 }

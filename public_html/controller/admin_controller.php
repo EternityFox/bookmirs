@@ -65,6 +65,9 @@ if ($_POST['add_news']) {
 } elseif ($_POST['edit_question']) {
     editQuestion();
     header("Location: /admin/?view=questions");
+} elseif ($_POST['edit_winner']) {
+    sendMessageWin();
+    header("Location: /admin/?view=winners");
 } elseif ($_POST['add_shop']) {
     addShop();
     header("Location: /admin/?view=shops");
@@ -86,8 +89,6 @@ if ($_POST['add_news']) {
 }
 switch ($view) {
     case('dash'):
-
-
         $stat = array();
         $stat['shops'] = countShops();
         $stat['products'] = countProducts();
@@ -102,6 +103,13 @@ switch ($view) {
         break;
     case('news'):
         $news = getNews();
+        break;
+    case('winners'):
+        $winners = getWinners();
+        break;
+    case('edit_winner'):
+        $winner_id = $_GET['winner_id'];
+        $winner = getWinnerDetail($winner_id);
         break;
     case('add_news'):
         break;
